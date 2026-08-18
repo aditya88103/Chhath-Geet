@@ -237,7 +237,7 @@
         />
       </div>
 
-      <!-- Filters Section (Singers, Days, Category) -->
+      <!-- Filters Section (Singers, Category) -->
       <div class="filter-section">
         <!-- Quick Singer Filters -->
         <div>
@@ -256,22 +256,6 @@
             <button class="filter-pill" data-singer="Swati Mishra">Swati Mishra</button>
             <button class="filter-pill" data-singer="Devi">Devi</button>
             <button class="filter-pill" data-singer="Khesari Lal Yadav">Khesari Lal</button>
-          </div>
-        </div>
-
-        <!-- Day Filters -->
-        <div style="margin-top:var(--space-md)">
-          <div class="filter-group-title">
-            <span>🌅</span> <span data-i18n="songs.filter_days_label">Filter by Chhath Day:</span>
-          </div>
-          <div class="filter-pills" id="day-pills">
-            <button class="filter-pill active" data-day="all" data-i18n="filter.all_days">All Days</button>
-            <button class="filter-pill" data-day="nahay-khay" data-i18n="filter.day1">Day 1</button>
-            <button class="filter-pill" data-day="kharna" data-i18n="filter.day2">Day 2</button>
-            <button class="filter-pill" data-day="sandhya-arghya" data-i18n="filter.day3">Day 3</button>
-            <button class="filter-pill" data-day="usha-arghya" data-i18n="filter.day4">Day 4</button>
-            <button class="filter-pill" data-day="kosi" data-i18n="filter.kosi">Kosi</button>
-            <button class="filter-pill" data-day="general" data-i18n="filter.general">General</button>
           </div>
         </div>
 
@@ -345,7 +329,6 @@
     // FILTER & RENDER SONGS
     // ═══════════════════════════════════════════════
     let activeSinger = 'all';
-    let activeDay = 'all';
     let activeCategory = 'all';
     let searchQuery = '';
 
@@ -383,16 +366,6 @@
       });
     });
 
-    // Day pills
-    document.querySelectorAll('#day-pills .filter-pill').forEach(pill => {
-      pill.addEventListener('click', () => {
-        document.querySelectorAll('#day-pills .filter-pill').forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-        activeDay = pill.dataset.day;
-        renderSongs();
-      });
-    });
-
     // Category pills
     document.querySelectorAll('#category-pills .filter-pill').forEach(pill => {
       pill.addEventListener('click', () => {
@@ -413,11 +386,6 @@
       return SONGS_DB.filter(song => {
         // Singer filter
         if (activeSinger !== 'all' && !song.artist.toLowerCase().includes(activeSinger.toLowerCase())) {
-          return false;
-        }
-
-        // Day filter
-        if (activeDay !== 'all' && song.day !== activeDay) {
           return false;
         }
 
