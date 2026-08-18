@@ -13,9 +13,9 @@ const I18N_DICT = {
     "nav.rituals": "Rituals",
     "nav.recipe": "Recipe",
     "nav.about": "About",
-    "nav.theme_usha": "Usha",
-    "nav.theme_sandhya": "Sandhya",
-    "nav.theme_kosi": "Kosi",
+    "nav.theme_usha": "🌅 Dawn",
+    "nav.theme_sandhya": "🌇 Dusk",
+    "nav.theme_kosi": "🪔 Night",
 
     // Home Hero
     "home.eyebrow": "Chhath Puja 2026 • 14–17 November",
@@ -181,9 +181,9 @@ const I18N_DICT = {
     "nav.rituals": "पूजा विधि",
     "nav.recipe": "ठेकुआ विधि",
     "nav.about": "छठ परिचय",
-    "nav.theme_usha": "उषा",
-    "nav.theme_sandhya": "संध्या",
-    "nav.theme_kosi": "कोसी",
+    "nav.theme_usha": "🌅 उषा",
+    "nav.theme_sandhya": "🌇 संध्या",
+    "nav.theme_kosi": "🪔 कोसी",
 
     // Home Hero
     "home.eyebrow": "छठ महापर्व 2026 • 14–17 नवम्बर",

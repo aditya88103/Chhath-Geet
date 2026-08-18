@@ -21,7 +21,8 @@
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
   .nav-clock { display: none; }
-  .theme-switcher { display: none; }
+  .theme-switcher { display: inline-flex; }
+  .theme-btn { padding: 4px 9px; font-size: 11px; }
 
   /* Hero */
   .hero-title { font-size: 3rem; }
@@ -62,11 +63,33 @@
   .section   { padding: var(--space-2xl) 0; }
 
   /* Navbar */
-  #navbar { padding: 0 var(--space-md); }
-  .nav-logo-text { font-size: var(--text-base); }
-  .lang-switcher { display: flex; }
-  .lang-btn { display: inline-flex; padding: 4px 10px; font-size: 11px; }
-  .theme-switcher { display: none; }
+  #navbar { padding: 0 var(--space-sm); gap: 6px; }
+  .nav-logo { gap: 6px; }
+  .nav-logo-sub { display: none; }
+  .nav-logo-text { font-size: 15px; }
+  .nav-actions { gap: 6px; }
+
+  .lang-switcher { display: inline-flex; padding: 2px; }
+  .lang-btn { display: inline-flex; padding: 4px 8px; font-size: 11px; }
+
+  .theme-switcher { display: inline-flex; padding: 2px; }
+  .theme-btn { display: inline-flex; padding: 4px 8px; font-size: 11px; }
+
+  /* Mobile Drawer */
+  .nav-drawer .theme-switcher { 
+    display: flex !important; 
+    width: 100%; 
+    max-width: 320px; 
+    margin: var(--space-md) auto 0; 
+    justify-content: space-around;
+    padding: 4px;
+  }
+  .nav-drawer .theme-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
 
   /* Hero */
   .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
