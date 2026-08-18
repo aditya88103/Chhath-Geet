@@ -21,8 +21,7 @@
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
   .nav-clock { display: none; }
-  .theme-switcher { display: inline-flex; }
-  .theme-btn { padding: 4px 9px; font-size: 11px; }
+  #navbar .theme-switcher { display: none !important; }
 
   /* Hero */
   .hero-title { font-size: 3rem; }
@@ -62,33 +61,59 @@
   .container { padding: 0 var(--space-md); }
   .section   { padding: var(--space-2xl) 0; }
 
-  /* Navbar */
-  #navbar { padding: 0 var(--space-sm); gap: 6px; }
+  /* Navbar: Logo + Lang + Hamburger */
+  #navbar { padding: 0 var(--space-md); gap: 6px; }
   .nav-logo { gap: 6px; }
   .nav-logo-sub { display: none; }
   .nav-logo-text { font-size: 15px; }
-  .nav-actions { gap: 6px; }
+  .nav-actions { gap: 8px; }
 
   .lang-switcher { display: inline-flex; padding: 2px; }
   .lang-btn { display: inline-flex; padding: 4px 8px; font-size: 11px; }
 
-  .theme-switcher { display: inline-flex; padding: 2px; }
-  .theme-btn { display: inline-flex; padding: 4px 8px; font-size: 11px; }
+  /* Hide theme switcher in top navbar on mobile */
+  #navbar .theme-switcher { display: none !important; }
 
-  /* Mobile Drawer */
+  /* Mobile Drawer Theme Section */
+  .nav-drawer {
+    padding: var(--space-xl) var(--space-lg);
+    gap: var(--space-sm);
+  }
+  .drawer-theme-section {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+  .drawer-section-title {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
   .nav-drawer .theme-switcher { 
     display: flex !important; 
     width: 100%; 
     max-width: 320px; 
-    margin: var(--space-md) auto 0; 
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 4px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
   }
   .nav-drawer .theme-btn {
     flex: 1;
     justify-content: center;
-    padding: 10px 12px;
+    padding: 10px 8px;
     font-size: 13px;
+    font-weight: 600;
   }
 
   /* Hero */
