@@ -735,7 +735,7 @@
 }
 
 .filter-pill {
-  padding: 6px 16px;
+  padding: 8px 18px;
   border-radius: var(--radius-full);
   font-size: var(--text-xs);
   font-weight: 600;
@@ -747,11 +747,20 @@
   transition: all var(--transition-fast);
   white-space: nowrap;
 }
-.filter-pill:hover { border-color: var(--saffron); color: var(--saffron); }
+.filter-pill:hover { 
+  border-color: var(--saffron); 
+  color: var(--saffron); 
+  background: var(--bg-glass-strong);
+}
 .filter-pill.active {
-  background: rgba(255,107,0,0.2);
-  border-color: var(--saffron);
-  color: var(--saffron);
+  background: var(--grad-saffron) !important;
+  border-color: transparent !important;
+  color: #000 !important;
+  font-weight: 700;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.4) inset,
+    0 0 14px rgba(255, 140, 0, 0.6),
+    0 0 28px rgba(255, 107, 0, 0.25) !important;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -1043,21 +1052,44 @@
   inset: 0;
   background: var(--grad-hero);
   z-index: 0;
+  transition: background var(--transition-slow);
 }
 
 .hero-orb-1 {
   position: absolute;
   width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(255,107,0,0.25) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--orb-1, rgba(255,107,0,0.3)) 0%, transparent 70%);
   top: -100px; right: -100px;
   animation: pulse-orb 5s ease-in-out infinite;
+  transition: background var(--transition-slow);
 }
 .hero-orb-2 {
   position: absolute;
   width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(33,150,166,0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--orb-2, rgba(255,179,0,0.2)) 0%, transparent 70%);
   bottom: 50px; left: -100px;
   animation: pulse-orb 7s ease-in-out infinite alternate;
+  transition: background var(--transition-slow);
+}
+
+/* ══════════════════════════════════════════════════════════
+   PAGE HEADER & DYNAMIC THEME GRADIENTS
+══════════════════════════════════════════════════════════ */
+.page-header {
+  position: relative;
+  padding: 110px 0 45px 0;
+  text-align: center;
+  overflow: hidden;
+  background: var(--bg-primary);
+  transition: background var(--transition-slow);
+}
+
+.page-header-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--header-bg);
+  pointer-events: none;
+  transition: background var(--transition-slow);
 }
 
 .hero-content {

@@ -64,7 +64,9 @@
   /* Navbar */
   #navbar { padding: 0 var(--space-md); }
   .nav-logo-text { font-size: var(--text-base); }
-  .lang-btn { display: none; }
+  .lang-switcher { display: flex; }
+  .lang-btn { display: inline-flex; padding: 4px 10px; font-size: 11px; }
+  .theme-switcher { display: none; }
 
   /* Hero */
   .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
@@ -72,16 +74,22 @@
   .hero-desc { font-size: var(--text-base); }
   .hero-stats { gap: var(--space-lg); }
 
-  /* Day Cards: single column */
-  .day-cards-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); }
-  .day-card { padding: var(--space-lg); }
-  .day-card-icon { font-size: 2rem; }
+  /* Day Cards */
+  .day-cards-grid { grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
+  .day-card { padding: var(--space-md); }
+  .day-card-icon { font-size: 1.8rem; }
 
   /* Section titles */
   .section-title { font-size: var(--text-2xl); }
 
-  /* Filter pills: scrollable */
-  .filter-pills { flex-wrap: nowrap; overflow-x: auto; padding-bottom: var(--space-sm); scrollbar-width: none; }
+  /* Filter pills: smooth touch scroll */
+  .filter-pills { 
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    padding: 6px 2px 12px 2px; 
+    scrollbar-width: none; 
+    -webkit-overflow-scrolling: touch;
+  }
   .filter-pills::-webkit-scrollbar { display: none; }
 
   /* Song cards */

@@ -106,36 +106,58 @@
 /* ── Usha Theme (Dawn Gold) — default ─────────────────────── */
 [data-theme="usha"] {
   --bg-primary:    #0A0703;
+  --bg-secondary:  #140C06;
   --saffron:       #FF8F00;
+  --saffron-light: #FFB300;
   --sunrise-gold:  #FFC107;
   --bg-card:       #17100A;
+  --bg-card-hover: #22170E;
+  --grad-hero:     linear-gradient(135deg, #0D0805 0%, #1A0A03 40%, #2D1204 70%, #0D0805 100%);
+  --grad-saffron:  linear-gradient(135deg, #FF6B00, #FFB300);
+  --header-bg:     radial-gradient(ellipse at 50% -20%, rgba(255, 107, 0, 0.35) 0%, rgba(10, 7, 3, 0) 75%);
+  --glow-saffron:  0 0 16px rgba(255, 140, 0, 0.65), 0 0 32px rgba(255, 107, 0, 0.3);
+  --border-glow:   rgba(255, 143, 0, 0.4);
+  --orb-1:         rgba(255, 107, 0, 0.3);
+  --orb-2:         rgba(255, 179, 0, 0.2);
 }
 
 /* ── Sandhya Theme (Crimson Dusk) ──────────────────────────── */
 [data-theme="sandhya"] {
   --bg-primary:    #0D0308;
+  --bg-secondary:  #1A0712;
   --saffron:       #E91E63;
   --saffron-light: #F06292;
   --sunrise-gold:  #FF5722;
   --bg-card:       #1A0810;
+  --bg-card-hover: #260C18;
   --text-accent:   #FF5722;
-  --grad-hero:     linear-gradient(135deg, #0D0308 0%, #1A0508 50%, #0D0308 100%);
-  --glow-saffron:  0 0 30px rgba(233,30,99,0.4), 0 0 60px rgba(233,30,99,0.2);
-  --border-glow:   rgba(233,30,99,0.4);
+  --grad-hero:     linear-gradient(135deg, #0D0308 0%, #240715 40%, #3D0A22 70%, #0D0308 100%);
+  --grad-saffron:  linear-gradient(135deg, #E91E63, #FF5722);
+  --header-bg:     radial-gradient(ellipse at 50% -20%, rgba(233, 30, 99, 0.4) 0%, rgba(13, 3, 8, 0) 75%);
+  --glow-saffron:  0 0 16px rgba(233, 30, 99, 0.65), 0 0 32px rgba(255, 87, 34, 0.3);
+  --border-glow:   rgba(233, 30, 99, 0.4);
+  --orb-1:         rgba(233, 30, 99, 0.35);
+  --orb-2:         rgba(255, 87, 34, 0.25);
 }
 
 /* ── Kosi Theme (Night Diya) ────────────────────────────────── */
 [data-theme="kosi"] {
   --bg-primary:    #02060F;
-  --saffron:       #FFC107;
-  --saffron-light: #FFD54F;
-  --sunrise-gold:  #FFECB3;
+  --bg-secondary:  #050E20;
+  --saffron:       #FFB300;
+  --saffron-light: #FFE082;
+  --sunrise-gold:  #FFD54F;
   --bg-card:       #081020;
-  --text-accent:   #FFC107;
-  --grad-hero:     linear-gradient(135deg, #02060F 0%, #06102A 50%, #02060F 100%);
-  --glow-saffron:  0 0 30px rgba(255,193,7,0.4), 0 0 60px rgba(255,193,7,0.15);
-  --border-glow:   rgba(255,193,7,0.4);
+  --bg-card-hover: #0E1B36;
+  --text-accent:   #FFB300;
+  --grad-hero:     linear-gradient(135deg, #02060F 0%, #06132C 40%, #0B2250 70%, #02060F 100%);
+  --grad-saffron:  linear-gradient(135deg, #FFB300, #FF8F00);
+  --header-bg:     radial-gradient(ellipse at 50% -20%, rgba(255, 179, 0, 0.35) 0%, rgba(2, 6, 15, 0) 75%);
+  --glow-saffron:  0 0 16px rgba(255, 179, 0, 0.65), 0 0 32px rgba(255, 179, 0, 0.25);
+  --border-glow:   rgba(255, 179, 0, 0.4);
   --river-blue:    #7986CB;
+  --orb-1:         rgba(255, 179, 0, 0.3);
+  --orb-2:         rgba(63, 81, 181, 0.25);
 }
 
 /* ── Global Reset ──────────────────────────────────────────── */

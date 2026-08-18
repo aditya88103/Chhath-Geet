@@ -92,11 +92,15 @@
     }
     
     .filter-pill.active {
-      background: var(--grad-saffron);
-      border-color: transparent;
-      color: #000;
-      font-weight: 600;
-      box-shadow: 0 4px 16px rgba(255, 107, 0, 0.4);
+      background: var(--grad-saffron) !important;
+      border-color: transparent !important;
+      color: #000 !important;
+      font-weight: 700;
+      box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.4) inset,
+        0 0 16px rgba(255, 140, 0, 0.7),
+        0 0 32px rgba(255, 107, 0, 0.35) !important;
+      transform: translateY(-1px);
     }
 
     .artist-select {
@@ -308,6 +312,7 @@
   <script src="js/songs-db.js"></script>
   <script src="js/audio-player.js"></script>
   <script src="js/i18n.js"></script>
+  <script src="js/petals.js"></script>
 
   <script>
     // Theme switcher
