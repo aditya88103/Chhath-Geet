@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="usha" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Step-by-step 4-day Chhath Puja Vidhi guide with Nahay Khay, Kharna, Sandhya Arghya, Usha Arghya rituals, sacred mantras, and interactive samagri checklist." />
+  <title>Rituals — Chhath Geet</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>" />
+  
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  
+  <style>
+    .ritual-tabs {
+      display: flex;
+      gap: var(--space-sm);
+      overflow-x: auto;
+      padding-bottom: var(--space-sm);
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .ritual-tab {
+      padding: 12px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .ritual-tab:hover {
+      border-color: var(--saffron);
+      color: var(--text-primary);
+      background: var(--bg-card-hover);
+    }
+    
+    .ritual-tab.active {
+      background: var(--grad-saffron);
+      border-color: transparent;
+      color: #000;
+      box-shadow: var(--glow-saffron);
+    }
+    
+    .ritual-content {
+      display: none;
+    }
+    
+    .ritual-content.active {
+      display: block;
+    }
+    
+    .step-timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+    
+    .step-timeline::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 12px;
+      bottom: 12px;
+      width: 2px;
+      background: var(--grad-saffron);
+    }
+    
+    .step-item {
+      position: relative;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .step-bullet {
+      position: absolute;
+      left: -32px;
+      top: 4px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--saffron);
+      border: 3px solid var(--bg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: #000;
+    }
+    
+    .step-title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-primary);
+    }
+    
+    .step-desc {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    
+    .checklist-item:hover {
+      border-color: var(--saffron);
+    }
+    
+    .checklist-item.checked {
+      background: rgba(76,175,80,0.1);
+      border-color: rgba(76,175,80,0.3);
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+    
+    .checklist-checkbox {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      accent-color: var(--saffron);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="home.html" class="nav-logo">
+      <div class="nav-logo-icon">☀️</div>
+      <div>
+        <div class="nav-logo-text" data-i18n="nav.brand">Chhath Geet</div>
+        <span class="nav-logo-sub" data-i18n="nav.brand_sub">छठ गीत</span>
+      </div>
+    </a>
+    
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">
+        <span class="nav-icon">🏠</span> <span data-i18n="nav.home">Home</span>
+      </a>
+      <a href="songs.html" class="nav-link">
+        <span class="nav-icon">📚</span> <span data-i18n="nav.songs">Songs</span>
+      </a>
+      <a href="rituals.html" class="nav-link active">
+        <span class="nav-icon">🕯️</span> <span data-i18n="nav.rituals">Rituals</span>
+      </a>
+      <a href="recipe.html" class="nav-link">
+        <span class="nav-icon">🍪</span> <span data-i18n="nav.recipe">Recipe</span>
+      </a>
+      <a href="about.html" class="nav-link">
+        <span class="nav-icon">ℹ️</span> <span data-i18n="nav.about">About</span>
+      </a>
+    </div>
+    
+    <div class="nav-actions">
+      <!-- Language Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">हिन्दी</button>
+      </div>
+
+      <!-- Theme Switcher -->
+      <div class="theme-switcher">
+        <button class="theme-btn" data-theme="usha" data-i18n="nav.theme_usha">Usha</button>
+        <button class="theme-btn" data-theme="sandhya" data-i18n="nav.theme_sandhya">Sandhya</button>
+        <button class="theme-btn" data-theme="kosi" data-i18n="nav.theme_kosi">Kosi</button>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="home.html" class="nav-link"><span class="nav-icon">🏠</span> <span data-i18n="nav.home">Home</span></a>
+    <a href="songs.html" class="nav-link"><span class="nav-icon">📚</span> <span data-i18n="nav.songs">Songs</span></a>
+    <a href="rituals.html" class="nav-link active"><span class="nav-icon">🕯️</span> <span data-i18n="nav.rituals">Rituals</span></a>
+    <a href="recipe.html" class="nav-link"><span class="nav-icon">🍪</span> <span data-i18n="nav.recipe">Recipe</span></a>
+    <a href="about.html" class="nav-link"><span class="nav-icon">ℹ️</span> <span data-i18n="nav.about">About</span></a>
+    
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:var(--space-md)">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">हिन्दी</button>
+      </div>
+    </div>
+
+    <div class="theme-switcher" style="margin-top:var(--space-md);justify-content:center">
+      <button class="theme-btn" data-theme="usha" data-i18n="nav.theme_usha">Usha</button>
+      <button class="theme-btn" data-theme="sandhya" data-i18n="nav.theme_sandhya">Sandhya</button>
+      <button class="theme-btn" data-theme="kosi" data-i18n="nav.theme_kosi">Kosi</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="app">
+    <div class="page-header">
+      <div class="page-header-bg"></div>
+      <div class="container">
+        <div class="badge badge-saffron" style="margin-bottom:var(--space-md)" data-i18n="rituals.badge">The Sacred Guide</div>
+        <h1 class="section-title gradient-text" data-i18n="rituals.title">4-Day Chhath Puja Vidhi</h1>
+        <p class="section-subtitle hindi-text" style="font-size:var(--text-xl)">छठ पूजा की चार दिवसीय विधि</p>
+        <p class="section-subtitle" style="margin-top:-12px" data-i18n="rituals.sub">
+          Step-by-step rituals, mantras, and samagri checklist
+        </p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom:var(--space-3xl)">
+      <!-- Day Tabs -->
+      <div class="ritual-tabs">
+        <button class="ritual-tab active" data-day="day1">
+          <span>🌊</span> <span>Day 1: Nahay Khay (नहाय खाय)</span>
+        </button>
+        <button class="ritual-tab" data-day="day2">
+          <span>🌙</span> <span>Day 2: Kharna (खरना)</span>
+        </button>
+        <button class="ritual-tab" data-day="day3">
+          <span>🌅</span> <span>Day 3: Sandhya Arghya (संध्या अर्घ्य)</span>
+        </button>
+        <button class="ritual-tab" data-day="day4">
+          <span>🌄</span> <span>Day 4: Usha Arghya (उषा अर्घ्य)</span>
+        </button>
+      </div>
+
+      <!-- DAY 1: Nahay Khay -->
+      <div class="ritual-content active" id="content-day1">
+        <div style="display:grid;grid-template-columns:1fr 340px;gap:var(--space-2xl)" class="ritual-grid">
+          <div>
+            <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-lg);display:flex;align-items:center;gap:8px">
+              <span>🌊</span> Day 1: Nahay Khay — Sacred Cleansing
+            </h2>
+            <div class="hindi-text" style="font-size:var(--text-lg);color:var(--text-secondary);margin-bottom:var(--space-xl)">
+              नहाय खाय — शुद्धि एवं सात्विक भोजन
+            </div>
+
+            <div class="step-timeline">
+              <div class="step-item">
+                <div class="step-bullet">1</div>
+                <div class="step-title">Ganga Snan / Sacred Holy Bath</div>
+                <div class="step-desc">
+                  Vrati wakes up before dawn, visits a sacred river (Ganga) or takes a bath at home mixing holy Gangajal in the water with pure devotional intent.
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-bullet">2</div>
+                <div class="step-title">Sanctification of the Kitchen (Rasoi Shuddhi)</div>
+                <div class="step-desc">
+                  The entire house and cooking area are thoroughly washed and sanctified. Brass, earthen, or virgin bronze utensils are prepared specifically for puja prasad.
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-bullet">3</div>
+                <div class="step-title">Kaddu-Bhaat (Bottle Gourd & Rice) Meal</div>
+                <div class="step-desc">
+                  A pure satvik meal of Bottle Gourd (Kaddu/Lauki), Arwa rice, Chana dal, and rock salt (Sendha Namak) is prepared in pure desi ghee or mustard oil. No onion or garlic.
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-bullet">4</div>
+                <div class="step-title">Vrati's First & Only Meal</div>
+                <div class="step-desc">
+                  The Vrati eats first after offering prayers to Surya Bhagwan. Family members and neighbors then partake in this sacred prasad.
+                </div>
+              </div>
+            </div>
+
+            <div class="mantra-block">
+              <div class="mantra-title">🕉️ Morning Surya Gayatri Mantra</div>
+              <div class="mantra-devanagari">
+                ॐ आदित्याय विद्महे मार्तण्डाय धीमहि तन्नः सूर्यः प्रचोदयात् ॥
+              </div>
+              <div class="mantra-transliteration">
+                Om Adityaya Vidmahe Martandaya Dheemahi Tannah Suryah Prachodayat ||
+              </div>
+              <div class="mantra-meaning">
+                "May the Divine Sun illuminate our intellect and dispel all darkness from our lives."
+              </div>
+            </div>
+          </div>
+
+          <!-- Samagri Checklist -->
+          <div>
+            <div class="glass-card" style="padding:var(--space-xl)">
+              <h3 style="font-size:var(--text-lg);margin-bottom:var(--space-md);display:flex;align-items:center;gap:6px">
+                <span>📋</span> Day 1 Samagri Checklist
+              </h3>
+              <div class="checklist">
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Fresh Kaddu / Lauki (लौकी)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Arwa Chawal (अरवा चावल)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Chana Dal (चना दाल)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Sendha Namak (सेंधा नमक)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Gangajal (गंगाजल)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Pure Desi Ghee (देसी घी)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Earthen Stove / Utensils</span></label>
+              </div>
+              <button class="btn btn-secondary btn-sm" style="width:100%;margin-top:var(--space-md)" onclick="resetChecklist(this)">
+                ↺ Reset Checklist
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 2: Kharna -->
+      <div class="ritual-content" id="content-day2">
+        <div style="display:grid;grid-template-columns:1fr 340px;gap:var(--space-2xl)" class="ritual-grid">
+          <div>
+            <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-lg);display:flex;align-items:center;gap:8px">
+              <span>🌙</span> Day 2: Kharna — The Sacred Fast Begins
+            </h2>
+            <div class="hindi-text" style="font-size:var(--text-lg);color:var(--text-secondary);margin-bottom:var(--space-xl)">
+              खरना — निर्जला व्रत आरंभ एवं रसियाव-रोटी भोग
+            </div>
+
+            <div class="step-timeline">
+              <div class="step-item">
+                <div class="step-bullet">1</div>
+                <div class="step-title">Day-long Nirjala Fast</div>
+                <div class="step-desc">
+                  Vrati observes a strict day-long fast without consuming even a single drop of water from sunrise until sunset.
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-bullet">2</div>
+                <div class="step-title">Preparation of Rasiyaw (Gur Kheer)</div>
+                <div class="step-desc">
+                  In the evening, pure sugarcane jaggery (Gur), whole cow milk, and new rice are cooked in a new earthen or brass pot using mango wood fire.
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-bullet">3</div>
+                <div class="step-title">Ghee Chapatis (Roti)</div>
+                <div class="step-desc">
+                  Fresh whole wheat chapatis smeared generously with pure desi ghee are prepared along with bananas and betel leaves for offering.
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-bullet">4</div>
+                <div class="step-title">Bhagwan Surya & Chhathi Maiya Bhog</div>
+                <div class="step-desc">
+                  Vrati offers bhog in complete silence in the puja room. After offering, the Vrati consumes this sacred prasad. Following this, the 36-hour strict nirjala fast commences.
+                </div>
+              </div>
+            </div>
+
+            <div class="mantra-block">
+              <div class="mantra-title">🕉️ Chhathi Maiya Dhyan Mantra</div>
+              <div class="mantra-devanagari">
+                ॐ कात्यायनि महामाये महायोगिन्यधीश्वरि । नन्दगोपसुतं देवि पतिं मे कुरु ते नमः ॥
+              </div>
+              <div class="mantra-transliteration">
+                Om Katyayani Mahamaye Mahayoginyadheeshwari | Nandagopasutam Devi Patim Me Kuru Te Namah ||
+              </div>
+              <div class="mantra-meaning">
+                "Salutations to Mother Shashthi / Chhathi Maiya, the eternal protector of children and provider of longevity and vitality."
+              </div>
+            </div>
+          </div>
+
+          <!-- Samagri Checklist -->
+          <div>
+            <div class="glass-card" style="padding:var(--space-xl)">
+              <h3 style="font-size:var(--text-lg);margin-bottom:var(--space-md);display:flex;align-items:center;gap:6px">
+                <span>📋</span> Day 2 Samagri Checklist
+              </h3>
+              <div class="checklist">
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Sugarcane Jaggery / Gur (गुड़)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Pure Cow Milk (गाय का दूध)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Arwa Rice for Kheer (चावल)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Whole Wheat Flour (गेहूं का आटा)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Ripe Bananas (केला का घौद)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Betel Leaves & Supari (पान-सुपारी)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Mango Wood (आम की लकड़ी)</span></label>
+              </div>
+              <button class="btn btn-secondary btn-sm" style="width:100%;margin-top:var(--space-md)" onclick="resetChecklist(this)">
+                ↺ Reset Checklist
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 3: Sandhya Arghya -->
+      <div class="ritual-content" id="content-day3">
+        <div style="display:grid;grid-template-columns:1fr 340px;gap:var(--space-2xl)" class="ritual-grid">
+          <div>
+            <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-lg);display:flex;align-items:center;gap:8px">
+              <span>🌅</span> Day 3: Sandhya Arghya — Evening Offering
+            </h2>
+            <div class="hindi-text" style="font-size:var(--text-lg);color:var(--text-secondary);margin-bottom:var(--space-xl)">
+              संध्या अर्घ्य — अस्ताचलगामी सूर्य को प्रथम अर्घ्य
+            </div>
+
+            <div class="step-timeline">
+              <div class="step-item">
+                <div class="step-bullet">1</div>
+                <div class="step-title">Thekua & Prasad Preparation</div>
+                <div class="step-desc">
+                  Pure wheat, jaggery, and ghee Thekua, Kasar laddoos, and seasonal fruits are prepared with holy cleanliness at home.
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-bullet">2</div>
+                <div class="step-title">Decoration of Soop & Daura (Bamboo Baskets)</div>
+                <div class="step-desc">
+                  Brass and bamboo soops are decorated with sindoor, filled with thekua, coconuts, sugarcane, radishes, turmeric roots, and earthen lamps.
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-bullet">3</div>
+                <div class="step-title">Ghat Shobha Yatra (Procession to the Riverbank)</div>
+                <div class="step-desc">
+                  The head of the family carries the Daura on their head while singing traditional folk songs on the journey to the riverbank (ghat).
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-bullet">4</div>
+                <div class="step-title">Offering Arghya to the Setting Sun</div>
+                <div class="step-desc">
+                  Vrati stands waist-deep in water facing west. With raw cow milk and Ganga water, Arghya is poured over the illuminated soop as the sun sets.
+                </div>
+              </div>
+            </div>
+
+            <div class="mantra-block">
+              <div class="mantra-title">🕉️ Sandhya Arghya Mantra</div>
+              <div class="mantra-devanagari">
+                ॐ एहि सूर्य सहस्त्रांशो तेजोराशे जगत्पते । अनुकम्पय मां भक्त्या गृहाणार्घ्यं दिवाकर ॥
+              </div>
+              <div class="mantra-transliteration">
+                Om Ehi Surya Sahasransho Tejorashe Jagatpate | Anukampaya Mam Bhaktya Grihanarghyam Divakara ||
+              </div>
+              <div class="mantra-meaning">
+                "O thousand-rayed Lord of the universe, reservoir of divine luminescence, accept this humble offering and bestow your compassionate blessings upon us."
+              </div>
+            </div>
+          </div>
+
+          <!-- Samagri Checklist -->
+          <div>
+            <div class="glass-card" style="padding:var(--space-xl)">
+              <h3 style="font-size:var(--text-lg);margin-bottom:var(--space-md);display:flex;align-items:center;gap:6px">
+                <span>📋</span> Day 3 Samagri Checklist
+              </h3>
+              <div class="checklist">
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Bamboo Daura & Soop (दउरा-सूप)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Fresh Thekua & Kasar (ठेकुआ-कसार)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Whole Sugarcane with Leaves (ईख)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Coconut with Water (डाभ नारियल)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Raw Milk & Gangajal (कच्चा दूध)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Earthen Deepaks & Camphor (दीपक)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Sindoor & Akshat (सिंदूर-अक्षत)</span></label>
+              </div>
+              <button class="btn btn-secondary btn-sm" style="width:100%;margin-top:var(--space-md)" onclick="resetChecklist(this)">
+                ↺ Reset Checklist
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 4: Usha Arghya -->
+      <div class="ritual-content" id="content-day4">
+        <div style="display:grid;grid-template-columns:1fr 340px;gap:var(--space-2xl)" class="ritual-grid">
+          <div>
+            <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-lg);display:flex;align-items:center;gap:8px">
+              <span>🌄</span> Day 4: Usha Arghya — Dawn Offering & Paran
+            </h2>
+            <div class="hindi-text" style="font-size:var(--text-lg);color:var(--text-secondary);margin-bottom:var(--space-xl)">
+              उषा अर्घ्य — उदीयमान सूर्य को अर्घ्य एवं पारण
+            </div>
+
+            <div class="step-timeline">
+              <div class="step-item">
+                <div class="step-bullet">1</div>
+                <div class="step-title">Brahmamuhurta Gathering at Ghat</div>
+                <div class="step-desc">
+                  Devotees return to the riverbank 2 hours before sunrise. Deepaks are lit around the sugarcane Kosi canopy in devotion.
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-bullet">2</div>
+                <div class="step-title">Standing in Holy Waters Facing East</div>
+                <div class="step-desc">
+                  Vrati steps waist-deep into the water facing east, awaiting the first golden rays of Arunodaya (Dawn).
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-bullet">3</div>
+                <div class="step-title">Offering the Final Usha Arghya</div>
+                <div class="step-desc">
+                  As the sun rises, Arghya is offered with raw milk and water while chanting Aditya Hridayam and Chhathi Maiya bhajans.
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-bullet">4</div>
+                <div class="step-title">Paran (Breaking the Fast)</div>
+                <div class="step-desc">
+                  Vrati touches the feet of elders, accepts blessings, and breaks the 36-hour fast by sipping raw milk, ginger-jaggery, and prasad.
+                </div>
+              </div>
+            </div>
+
+            <div class="mantra-block">
+              <div class="mantra-title">🕉️ Usha Arghya Samarpan Mantra</div>
+              <div class="mantra-devanagari">
+                ॐ नमो भगवते श्रीसूर्यायादित्याय अहोपतये नमः । सर्वव्यापिने नमः ॥
+              </div>
+              <div class="mantra-transliteration">
+                Om Namo Bhagavate Shri Suryayadityaya Ahopataye Namah | Sarvavyapine Namah ||
+              </div>
+              <div class="mantra-meaning">
+                "Salutations to Lord Surya, the sovereign master of days, the omnipresent light sustaining all life on Earth."
+              </div>
+            </div>
+          </div>
+
+          <!-- Samagri Checklist -->
+          <div>
+            <div class="glass-card" style="padding:var(--space-xl)">
+              <h3 style="font-size:var(--text-lg);margin-bottom:var(--space-md);display:flex;align-items:center;gap:6px">
+                <span>📋</span> Day 4 Samagri Checklist
+              </h3>
+              <div class="checklist">
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Fresh Cow Milk (अर्घ्य हेतु दूध)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Ginger & Jaggery for Paran (अदरक-गुड़)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Fresh Flowers & Garlands (माला-फूल)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Camphor & Ghee Lamps (कपूर-दीपक)</span></label>
+                <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /> <span>Bhakti Prasad Bags (प्रसाद वितरण)</span></label>
+              </div>
+              <button class="btn btn-secondary btn-sm" style="width:100%;margin-top:var(--space-md)" onclick="resetChecklist(this)">
+                ↺ Reset Checklist
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Shared JS -->
+  <script src="js/songs-db.js"></script>
+  <script src="js/audio-player.js"></script>
+  <script src="js/i18n.js"></script>
+
+  <script>
+    // Theme switcher
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.dataset.theme;
+        document.documentElement.setAttribute('data-theme', theme);
+        document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        localStorage.setItem('cg_theme', theme);
+      });
+    });
+    
+    const savedTheme = localStorage.getItem('cg_theme') || 'usha';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll(`[data-theme="${savedTheme}"]`).forEach(b => b.classList.add('active'));
+
+    // Hamburger toggle
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer = document.getElementById('nav-drawer');
+    if (hamburger && drawer) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        drawer.classList.toggle('open');
+      });
+    }
+
+    // ═══════════════════════════════════════════════
+    // RITUALS TABS & URL PARAM SWITCHING
+    // ═══════════════════════════════════════════════
+    function switchTab(dayKey) {
+      document.querySelectorAll('.ritual-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.day === dayKey);
+      });
+      document.querySelectorAll('.ritual-content').forEach(c => {
+        c.classList.toggle('active', c.id === `content-${dayKey}`);
+      });
+    }
+
+    document.querySelectorAll('.ritual-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        switchTab(tab.dataset.day);
+      });
+    });
+
+    // Check URL parameters for day
+    const urlParams = new URLSearchParams(window.location.search);
+    const dayParam = urlParams.get('day');
+    if (dayParam) {
+      const targetDay = `day${dayParam}`;
+      if (document.getElementById(`content-${targetDay}`)) {
+        switchTab(targetDay);
+      }
+    }
+
+    // ═══════════════════════════════════════════════
+    // CHECKLIST PERSISTENCE
+    // ═══════════════════════════════════════════════
+    document.querySelectorAll('.checklist-checkbox').forEach((box, i) => {
+      const saved = localStorage.getItem(`cg_check_${i}`);
+      if (saved === 'true') {
+        box.checked = true;
+        box.closest('.checklist-item').classList.add('checked');
+      }
+      box.addEventListener('change', () => {
+        box.closest('.checklist-item').classList.toggle('checked', box.checked);
+        localStorage.setItem(`cg_check_${i}`, box.checked);
+      });
+    });
+
+    function resetChecklist(btn) {
+      const parent = btn.closest('.glass-card');
+      parent.querySelectorAll('.checklist-checkbox').forEach((box, i) => {
+        box.checked = false;
+        box.closest('.checklist-item').classList.remove('checked');
+        localStorage.removeItem(`cg_check_${i}`);
+      });
+    }
+  </script>
+</body>
+</html>

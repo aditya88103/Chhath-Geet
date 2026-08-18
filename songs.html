@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="usha" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore and listen to all 62 sacred Chhath Puja songs by Sharda Sinha, Anuradha Paudwal, Kalpana, Pawan Singh, Swati Mishra, Devi, and Khesari Lal." />
+  <title>Songs — Chhath Geet</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>" />
+  
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  
+  <style>
+    .songs-search-bar {
+      position: relative;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .songs-search-input {
+      width: 100%;
+      padding: 16px 20px 16px 52px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-full);
+      color: var(--text-primary);
+      font-size: var(--text-base);
+      outline: none;
+      transition: all var(--transition-fast);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    
+    .songs-search-input:focus {
+      border-color: var(--saffron);
+      box-shadow: 0 0 0 3px rgba(255,107,0,0.25);
+    }
+    
+    .songs-search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      pointer-events: none;
+    }
+    
+    .filter-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: var(--space-lg) var(--space-xl);
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .filter-group-title {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .filter-pills {
+      display: flex;
+      gap: var(--space-xs);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-md);
+    }
+    
+    .filter-pill {
+      padding: 8px 16px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .filter-pill:hover {
+      border-color: var(--saffron);
+      color: var(--text-primary);
+    }
+    
+    .filter-pill.active {
+      background: var(--grad-saffron);
+      border-color: transparent;
+      color: #000;
+      font-weight: 600;
+      box-shadow: var(--glow-saffron);
+    }
+
+    .artist-select {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      padding: 8px 14px;
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .artist-select:focus {
+      border-color: var(--saffron);
+    }
+    
+    .songs-grid-all {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-md);
+    }
+    
+    .results-count {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      margin-bottom: var(--space-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .song-card.now-playing {
+      border-color: var(--saffron);
+      background: rgba(255, 107, 0, 0.08);
+      box-shadow: 0 0 15px rgba(255, 107, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="home.html" class="nav-logo">
+      <div class="nav-logo-icon">☀️</div>
+      <div>
+        <div class="nav-logo-text" data-i18n="nav.brand">Chhath Geet</div>
+        <span class="nav-logo-sub" data-i18n="nav.brand_sub">छठ गीत</span>
+      </div>
+    </a>
+    
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">
+        <span class="nav-icon">🏠</span> <span data-i18n="nav.home">Home</span>
+      </a>
+      <a href="songs.html" class="nav-link active">
+        <span class="nav-icon">📚</span> <span data-i18n="nav.songs">Songs</span>
+      </a>
+      <a href="rituals.html" class="nav-link">
+        <span class="nav-icon">🕯️</span> <span data-i18n="nav.rituals">Rituals</span>
+      </a>
+      <a href="recipe.html" class="nav-link">
+        <span class="nav-icon">🍪</span> <span data-i18n="nav.recipe">Recipe</span>
+      </a>
+      <a href="about.html" class="nav-link">
+        <span class="nav-icon">ℹ️</span> <span data-i18n="nav.about">About</span>
+      </a>
+    </div>
+    
+    <div class="nav-actions">
+      <!-- Language Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">हिन्दी</button>
+      </div>
+
+      <!-- Theme Switcher -->
+      <div class="theme-switcher">
+        <button class="theme-btn" data-theme="usha" data-i18n="nav.theme_usha">Usha</button>
+        <button class="theme-btn" data-theme="sandhya" data-i18n="nav.theme_sandhya">Sandhya</button>
+        <button class="theme-btn" data-theme="kosi" data-i18n="nav.theme_kosi">Kosi</button>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="home.html" class="nav-link"><span class="nav-icon">🏠</span> <span data-i18n="nav.home">Home</span></a>
+    <a href="songs.html" class="nav-link active"><span class="nav-icon">📚</span> <span data-i18n="nav.songs">Songs</span></a>
+    <a href="rituals.html" class="nav-link"><span class="nav-icon">🕯️</span> <span data-i18n="nav.rituals">Rituals</span></a>
+    <a href="recipe.html" class="nav-link"><span class="nav-icon">🍪</span> <span data-i18n="nav.recipe">Recipe</span></a>
+    <a href="about.html" class="nav-link"><span class="nav-icon">ℹ️</span> <span data-i18n="nav.about">About</span></a>
+    
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:var(--space-md)">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">हिन्दी</button>
+      </div>
+    </div>
+
+    <div class="theme-switcher" style="margin-top:var(--space-md);justify-content:center">
+      <button class="theme-btn" data-theme="usha" data-i18n="nav.theme_usha">Usha</button>
+      <button class="theme-btn" data-theme="sandhya" data-i18n="nav.theme_sandhya">Sandhya</button>
+      <button class="theme-btn" data-theme="kosi" data-i18n="nav.theme_kosi">Kosi</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="app">
+    <div class="page-header">
+      <div class="page-header-bg"></div>
+      <div class="container">
+        <div class="badge badge-gold" style="margin-bottom:var(--space-md)" data-i18n="songs.badge">Complete Audio Collection</div>
+        <h1 class="section-title gradient-text" data-i18n="songs.title">62 Sacred Chhath Geet</h1>
+        <p class="section-subtitle hindi-text" style="font-size:var(--text-xl)">सम्पूर्ण पावन छठ गीत संग्रह</p>
+        <p class="section-subtitle" style="margin-top:-12px" data-i18n="songs.sub">
+          Filter by your favorite Singers and Ritual Days • Click any song to play instantly
+        </p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom:var(--space-3xl)">
+      <!-- Search Bar -->
+      <div class="songs-search-bar">
+        <span class="songs-search-icon">🔍</span>
+        <input 
+          type="text" 
+          id="search-input" 
+          class="songs-search-input" 
+          placeholder="Search songs by title or singer (e.g. Sharda Sinha, Ho Deenanath)..." 
+          data-i18n-placeholder="songs.search_placeholder"
+        />
+      </div>
+
+      <!-- Filters Section (Singers, Days, Category) -->
+      <div class="filter-section">
+        <!-- Quick Singer Filters -->
+        <div>
+          <div class="filter-group-title">
+            <span>🎤</span> <span data-i18n="songs.filter_singers_label">Filter by Singer:</span>
+            <select id="artist-select" class="artist-select" style="margin-left:auto">
+              <option value="all" data-i18n="songs.all_singers_opt">👑 All Singers</option>
+            </select>
+          </div>
+          <div class="filter-pills" id="singer-pills">
+            <button class="filter-pill active" data-singer="all" data-i18n="filter.all_singers">All Singers</button>
+            <button class="filter-pill" data-singer="Sharda Sinha">👑 Sharda Sinha</button>
+            <button class="filter-pill" data-singer="Anuradha Paudwal">🌸 Anuradha Paudwal</button>
+            <button class="filter-pill" data-singer="Kalpana Patowary">✨ Kalpana Patowary</button>
+            <button class="filter-pill" data-singer="Pawan Singh">🔥 Pawan Singh</button>
+            <button class="filter-pill" data-singer="Swati Mishra">🌟 Swati Mishra</button>
+            <button class="filter-pill" data-singer="Devi">🕊️ Devi</button>
+            <button class="filter-pill" data-singer="Khesari Lal Yadav">🎵 Khesari Lal</button>
+          </div>
+        </div>
+
+        <!-- Day Filters -->
+        <div style="margin-top:var(--space-md)">
+          <div class="filter-group-title">
+            <span>🌅</span> <span data-i18n="songs.filter_days_label">Filter by Chhath Day:</span>
+          </div>
+          <div class="filter-pills" id="day-pills">
+            <button class="filter-pill active" data-day="all" data-i18n="filter.all_days">All Days (62)</button>
+            <button class="filter-pill" data-day="day1">🌊 Day 1: Nahay Khay</button>
+            <button class="filter-pill" data-day="day2">🌙 Day 2: Kharna</button>
+            <button class="filter-pill" data-day="day3">🌅 Day 3: Sandhya Arghya</button>
+            <button class="filter-pill" data-day="day4">🌄 Day 4: Usha Arghya</button>
+            <button class="filter-pill" data-day="kosi">🎋 Kosi Bharai</button>
+            <button class="filter-pill" data-day="all-days">☀️ Sarvajanik</button>
+          </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div style="margin-top:var(--space-md)">
+          <div class="filter-group-title">
+            <span>🎶</span> <span data-i18n="songs.filter_category_label">Category:</span>
+          </div>
+          <div class="filter-pills" id="category-pills">
+            <button class="filter-pill active" data-cat="all" data-i18n="filter.all_categories">All Categories</button>
+            <button class="filter-pill" data-cat="traditional" data-i18n="filter.paramparik">🎶 Traditional</button>
+            <button class="filter-pill" data-cat="aarti" data-i18n="filter.aarti">🙏 Aarti & Bhajan</button>
+            <button class="filter-pill" data-cat="kosi" data-i18n="filter.kosi">🎋 Kosi Geet</button>
+            <button class="filter-pill" data-cat="modern" data-i18n="filter.modern">🎤 Modern</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Count & Play All button -->
+      <div class="results-count">
+        <div>
+          Showing <strong id="song-count" style="color:var(--saffron)">62</strong> songs
+          <span style="margin-left:12px;color:var(--text-muted);font-size:12px" data-i18n="songs.tap_to_play">✨ Tap any song to play</span>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-play-filtered" style="padding:6px 16px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span data-i18n="songs.btn_play_all">Play All</span>
+        </button>
+      </div>
+
+      <!-- Unified Songs Grid -->
+      <div class="songs-grid-all" id="songs-list">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Shared JS -->
+  <script src="js/songs-db.js"></script>
+  <script src="js/audio-player.js"></script>
+  <script src="js/i18n.js"></script>
+
+  <script>
+    // Theme switcher
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.dataset.theme;
+        document.documentElement.setAttribute('data-theme', theme);
+        document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        localStorage.setItem('cg_theme', theme);
+      });
+    });
+    
+    const savedTheme = localStorage.getItem('cg_theme') || 'usha';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll(`[data-theme="${savedTheme}"]`).forEach(b => b.classList.add('active'));
+
+    // Hamburger toggle
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer = document.getElementById('nav-drawer');
+    if (hamburger && drawer) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        drawer.classList.toggle('open');
+      });
+    }
+
+    // ═══════════════════════════════════════════════
+    // FILTER & RENDER SONGS
+    // ═══════════════════════════════════════════════
+    let activeSinger = 'all';
+    let activeDay = 'all';
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    const searchInput = document.getElementById('search-input');
+    const songsContainer = document.getElementById('songs-list');
+    const songCountEl = document.getElementById('song-count');
+    const artistSelect = document.getElementById('artist-select');
+
+    // Populate artist dropdown
+    const allArtists = getAllArtists();
+    allArtists.forEach(art => {
+      const opt = document.createElement('option');
+      opt.value = art;
+      opt.textContent = art;
+      artistSelect.appendChild(opt);
+    });
+
+    artistSelect.addEventListener('change', (e) => {
+      activeSinger = e.target.value;
+      // Sync quick pill state
+      document.querySelectorAll('#singer-pills .filter-pill').forEach(p => {
+        p.classList.toggle('active', p.dataset.singer === activeSinger);
+      });
+      renderSongs();
+    });
+
+    // Singer quick pills
+    document.querySelectorAll('#singer-pills .filter-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('#singer-pills .filter-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeSinger = pill.dataset.singer;
+        artistSelect.value = activeSinger;
+        renderSongs();
+      });
+    });
+
+    // Day pills
+    document.querySelectorAll('#day-pills .filter-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('#day-pills .filter-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeDay = pill.dataset.day;
+        renderSongs();
+      });
+    });
+
+    // Category pills
+    document.querySelectorAll('#category-pills .filter-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('#category-pills .filter-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeCategory = pill.dataset.cat;
+        renderSongs();
+      });
+    });
+
+    // Search input
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      renderSongs();
+    });
+
+    function getFilteredSongs() {
+      return SONGS_DB.filter(song => {
+        // Singer filter
+        if (activeSinger !== 'all' && !song.artist.toLowerCase().includes(activeSinger.toLowerCase())) {
+          return false;
+        }
+
+        // Day filter
+        if (activeDay !== 'all' && song.day !== activeDay) {
+          return false;
+        }
+
+        // Category filter
+        if (activeCategory !== 'all' && song.category !== activeCategory) {
+          return false;
+        }
+
+        // Search query
+        if (searchQuery) {
+          const matchTitle = song.title.toLowerCase().includes(searchQuery);
+          const matchTitleHi = song.titleHi.toLowerCase().includes(searchQuery);
+          const matchArtist = song.artist.toLowerCase().includes(searchQuery);
+          if (!matchTitle && !matchTitleHi && !matchArtist) return false;
+        }
+
+        return true;
+      });
+    }
+
+    function renderSongs() {
+      const filtered = getFilteredSongs();
+      songCountEl.textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        songsContainer.innerHTML = `
+          <div style="grid-column:1/-1;text-align:center;padding:var(--space-3xl);color:var(--text-muted)">
+            <div style="font-size:3rem;margin-bottom:var(--space-md)">🔍</div>
+            <div style="font-size:var(--text-lg);font-weight:600;color:var(--text-secondary)">No songs found</div>
+            <p style="font-size:var(--text-sm);margin-top:6px">Try changing your search keywords or filter options.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const currentSong = window.CG_PLAYER ? window.CG_PLAYER.currentSong : null;
+
+      songsContainer.innerHTML = filtered.map((s, i) => `
+        <div class="song-card ${currentSong && currentSong.id === s.id ? 'now-playing' : ''}" data-song-id="${s.id}" style="cursor:pointer">
+          <div class="song-num">${i + 1}</div>
+          <div class="song-thumb" style="background:linear-gradient(135deg,${DAY_COLORS[s.day] || '#FF6B00'},#FFB300)">
+            <span>${DAY_ICONS[s.day] || '🎵'}</span>
+            <div class="play-overlay">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          </div>
+          <div class="song-info">
+            <div class="song-title">${s.title}</div>
+            <div class="song-title-hi hindi-text">${s.titleHi}</div>
+            <div class="song-meta">
+              <span>${s.artist}</span>
+              <span>·</span>
+              <span>${DAY_NAMES[s.day] || s.day}</span>
+            </div>
+          </div>
+          <div class="song-actions">
+            <button class="btn-icon" title="Play Song" onclick="event.stopPropagation(); playSpecificSong(${s.id})">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      // Add click listeners to cards
+      songsContainer.querySelectorAll('.song-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const id = parseInt(card.dataset.songId);
+          playSpecificSong(id);
+        });
+      });
+    }
+
+    function playSpecificSong(id) {
+      const filtered = getFilteredSongs();
+      const song = SONGS_DB.find(s => s.id === id);
+      if (song) {
+        playSongFromDB(song, filtered.length > 0 ? filtered : SONGS_DB);
+      }
+    }
+
+    // Play All Filtered button
+    document.getElementById('btn-play-filtered').addEventListener('click', () => {
+      const filtered = getFilteredSongs();
+      if (filtered.length > 0) {
+        playSongFromDB(filtered[0], filtered);
+      }
+    });
+
+    // Update active highlight when song changes
+    window.addEventListener('chhathSongChange', (e) => {
+      const activeId = e.detail && e.detail.song ? e.detail.song.id : null;
+      document.querySelectorAll('.song-card').forEach(card => {
+        card.classList.toggle('now-playing', parseInt(card.dataset.songId) === activeId);
+      });
+    });
+
+    // Initial render
+    renderSongs();
+  </script>
+</body>
+</html>

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="usha" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chhath Geet — The complete digital sanctuary for Chhath Puja with 62+ sacred audio songs, 4-day ritual guide, panchang calendar 2024–2027, and thekua recipe." />
+  <title>Home — Chhath Geet</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <style>
+    /* Countdown & Panchang Table Styles */
+    .countdown-display {
+      display: flex;
+      gap: var(--space-lg);
+      justify-content: center;
+      margin: var(--space-xl) 0;
+      flex-wrap: wrap;
+    }
+    
+    .countdown-unit {
+      text-align: center;
+      min-width: 75px;
+      padding: 12px 16px;
+      background: rgba(255, 107, 0, 0.08);
+      border: 1px solid rgba(255, 107, 0, 0.2);
+      border-radius: var(--radius-md);
+    }
+    
+    .countdown-num {
+      font-size: var(--text-4xl);
+      font-weight: 700;
+      color: var(--saffron);
+      font-family: 'Crimson Pro', serif;
+      line-height: 1;
+      margin-bottom: 6px;
+      text-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+    }
+    
+    .countdown-label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    
+    .panchang-table {
+      width: 100%;
+      background: var(--bg-card);
+      border-collapse: collapse;
+    }
+    
+    .panchang-table thead {
+      background: var(--bg-secondary);
+    }
+    
+    .panchang-table th,
+    .panchang-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    
+    .panchang-table th {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .panchang-table td {
+      font-size: var(--text-sm);
+      color: var(--text-primary);
+    }
+    
+    .panchang-table tr:hover td {
+      background: rgba(255, 107, 0, 0.04);
+    }
+    
+    .time-val {
+      color: var(--saffron);
+      font-weight: 600;
+      font-family: var(--font-primary);
+    }
+
+    .city-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .city-select:focus {
+      border-color: var(--saffron);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="home.html" class="nav-logo">
+      <div class="nav-logo-icon">☀️</div>
+      <div>
+        <div class="nav-logo-text" data-i18n="nav.brand">Chhath Geet</div>
+        <span class="nav-logo-sub" data-i18n="nav.brand_sub">छठ गीत</span>
+      </div>
+    </a>
+    
+    <div class="nav-links">
+      <a href="home.html" class="nav-link active">
+        <span class="nav-icon">🏠</span> <span data-i18n="nav.home">Home</span>
+      </a>
+      <a href="songs.html" class="nav-link">
+        <span class="nav-icon">📚</span> <span data-i18n="nav.songs">Songs</span>
+      </a>
+      <a href="rituals.html" class="nav-link">
+        <span class="nav-icon">🕯️</span> <span data-i18n="nav.rituals">Rituals</span>
+      </a>
+      <a href="recipe.html" class="nav-link">
+        <span class="nav-icon">🍪</span> <span data-i18n="nav.recipe">Recipe</span>
+      </a>
+      <a href="about.html" class="nav-link">
+        <span class="nav-icon">ℹ️</span> <span data-i18n="nav.about">About</span>
+      </a>
+    </div>
+    
+    <div class="nav-actions">
+      <!-- Language Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">हिन्दी</button>
+      </div>
+
+      <!-- Theme Switcher -->
+      <div class="theme-switcher">
+        <button class="theme-btn" data-theme="usha" data-i18n="nav.theme_usha">Usha</button>
+        <button class="theme-btn" data-theme="sandhya" data-i18n="nav.theme_sandhya">Sandhya</button>
+        <button class="theme-btn" data-theme="kosi" data-i18n="nav.theme_kosi">Kosi</button>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="home.html" class="nav-link active"><span class="nav-icon">🏠</span> <span data-i18n="nav.home">Home</span></a>
+    <a href="songs.html" class="nav-link"><span class="nav-icon">📚</span> <span data-i18n="nav.songs">Songs</span></a>
+    <a href="rituals.html" class="nav-link"><span class="nav-icon">🕯️</span> <span data-i18n="nav.rituals">Rituals</span></a>
+    <a href="recipe.html" class="nav-link"><span class="nav-icon">🍪</span> <span data-i18n="nav.recipe">Recipe</span></a>
+    <a href="about.html" class="nav-link"><span class="nav-icon">ℹ️</span> <span data-i18n="nav.about">About</span></a>
+    
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:var(--space-md)">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">हिन्दी</button>
+      </div>
+    </div>
+
+    <div class="theme-switcher" style="margin-top:var(--space-md);justify-content:center">
+      <button class="theme-btn" data-theme="usha" data-i18n="nav.theme_usha">Usha</button>
+      <button class="theme-btn" data-theme="sandhya" data-i18n="nav.theme_sandhya">Sandhya</button>
+      <button class="theme-btn" data-theme="kosi" data-i18n="nav.theme_kosi">Kosi</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="app">
+    <!-- Hero Section -->
+    <section class="hero" id="home-hero" style="padding-top:0">
+      <div class="hero-bg"></div>
+      <div class="hero-orb-1"></div>
+      <div class="hero-orb-2"></div>
+
+      <div class="hero-content">
+        <div class="hero-eyebrow animate-fade-in">
+          <span>☀️</span>
+          <span data-i18n="home.eyebrow">Chhath Puja 2026 • 14–17 November</span>
+        </div>
+
+        <h1 class="hero-title gradient-text animate-fade-up">
+          <span data-i18n="home.title">Chhath Geet</span>
+          <span class="hero-title-hi" data-i18n="home.title_sub">छठ गीत</span>
+        </h1>
+
+        <p class="hero-desc animate-fade-in" style="animation-delay:0.2s" data-i18n="home.desc">
+          The complete digital sanctuary for Chhath Puja — 62+ sacred audio songs, 4-day ritual guide,
+          live arghya panchang, and traditional thekua recipe. 🙏
+        </p>
+
+        <div class="hero-actions animate-fade-up" style="animation-delay:0.3s">
+          <a href="songs.html" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span data-i18n="home.btn_play_all">Play All Songs</span>
+          </a>
+          <a href="rituals.html" class="btn btn-secondary">
+            <span>🕯️</span> <span data-i18n="home.btn_guide">4-Day Guide</span>
+          </a>
+          <a href="#panchang-section" class="btn btn-secondary">
+            <span>📅</span> <span data-i18n="home.btn_panchang">Panchang & Calendar</span>
+          </a>
+        </div>
+
+        <div class="hero-stats animate-fade-in" style="animation-delay:0.5s">
+          <div class="hero-stat">
+            <div class="hero-stat-num">62+</div>
+            <div class="hero-stat-label" data-i18n="home.stat_songs">Sacred Songs</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">4</div>
+            <div class="hero-stat-label" data-i18n="home.stat_rituals">Day Rituals</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">12+</div>
+            <div class="hero-stat-label" data-i18n="home.stat_cities">Major Cities</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">36</div>
+            <div class="hero-stat-label" data-i18n="home.stat_fast">Hour Fast</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4-Day Quick Cards -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center" style="margin-bottom:var(--space-xl)">
+          <div class="badge badge-saffron" style="margin-bottom:var(--space-md)" data-i18n="home.vidhi_badge">The Sacred Four Days</div>
+          <h2 class="section-title gradient-text" data-i18n="home.vidhi_title">Chhath Puja Vidhi</h2>
+          <p class="section-subtitle hindi-text" style="font-size:var(--text-xl)" data-i18n="home.vidhi_sub">छठ पूजा की चार दिवसीय विधि</p>
+        </div>
+        <div class="day-cards-grid">
+          <a class="day-card" href="rituals.html?day=1" style="--card-color:#2196A6">
+            <div class="day-card-num">Day 1</div>
+            <span class="day-card-icon">🌊</span>
+            <div class="day-card-name" data-i18n="day.day1_name">Nahay Khay</div>
+            <div class="day-card-hi hindi-text">नहाय खाय</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-top:8px;line-height:1.5" data-i18n="day.day1_desc">Sacred bath & single meal</p>
+          </a>
+          <a class="day-card" href="rituals.html?day=2" style="--card-color:#FF8F00">
+            <div class="day-card-num">Day 2</div>
+            <span class="day-card-icon">🌙</span>
+            <div class="day-card-name" data-i18n="day.day2_name">Kharna</div>
+            <div class="day-card-hi hindi-text">खरना</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-top:8px;line-height:1.5" data-i18n="day.day2_desc">Jaggery kheer & nirjala fast begins</p>
+          </a>
+          <a class="day-card" href="rituals.html?day=3" style="--card-color:#E91E63">
+            <div class="day-card-num">Day 3</div>
+            <span class="day-card-icon">🌅</span>
+            <div class="day-card-name" data-i18n="day.day3_name">Sandhya Arghya</div>
+            <div class="day-card-hi hindi-text">संध्या अर्घ्य</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-top:8px;line-height:1.5" data-i18n="day.day3_desc">Evening offering to setting sun</p>
+          </a>
+          <a class="day-card" href="rituals.html?day=4" style="--card-color:#FF6B00">
+            <div class="day-card-num">Day 4</div>
+            <span class="day-card-icon">🌄</span>
+            <div class="day-card-name" data-i18n="day.day4_name">Usha Arghya</div>
+            <div class="day-card-hi hindi-text">उषा अर्घ्य</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-top:8px;line-height:1.5" data-i18n="day.day4_desc">Dawn offering & fast breaking</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Songs -->
+    <section class="section" style="background:linear-gradient(180deg, transparent, rgba(255,107,0,0.04), transparent)">
+      <div class="container">
+        <div class="flex items-center justify-between" style="margin-bottom:var(--space-xl)">
+          <div>
+            <div class="badge badge-gold" style="margin-bottom:var(--space-sm)" data-i18n="home.songs_badge">Must Listen</div>
+            <h2 class="section-title" data-i18n="home.songs_title">Iconic Chhath Geet</h2>
+            <p class="section-subtitle" data-i18n="home.songs_sub">The timeless sacred classics you must hear</p>
+          </div>
+          <a href="songs.html" class="btn btn-secondary" data-i18n="home.view_all_songs">View All 62 →</a>
+        </div>
+
+        <div class="songs-grid">
+          <!-- Songs will be loaded here -->
+          <p style="text-align:center;color:var(--text-muted);grid-column:1/-1">Loading featured songs...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panchang, Live Countdown & Multi-Year Calendar Section -->
+    <section class="section" id="panchang-section">
+      <div class="container">
+        <div class="text-center" style="margin-bottom:var(--space-xl)">
+          <div class="badge badge-blue" style="margin-bottom:var(--space-md)" data-i18n="panchang.badge">📅 Panchang & Timings</div>
+          <h2 class="section-title gradient-text" data-i18n="panchang.title">Chhath Arghya Panchang & Calendar</h2>
+          <p class="section-subtitle hindi-text" style="font-size:var(--text-xl)" data-i18n="panchang.sub">छठ अर्घ्य पंचांग एवं तिथि</p>
+        </div>
+
+        <!-- City Selector + Countdown -->
+        <div class="glass-card" style="padding:var(--space-xl);margin-bottom:var(--space-2xl);text-align:center">
+          <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-md);margin-bottom:var(--space-xl);flex-wrap:wrap">
+            <label for="city-select" style="font-size:var(--text-sm);color:var(--text-secondary);font-weight:500">
+              🌏 <span data-i18n="panchang.select_city">Select City:</span>
+            </label>
+            <select id="city-select" class="city-select">
+              <option value="patna">🇮🇳 Patna, Bihar (पटना, बिहार)</option>
+              <option value="delhi">🇮🇳 Delhi NCR (दिल्ली)</option>
+              <option value="mumbai">🇮🇳 Mumbai, Maharashtra (मुंबई)</option>
+              <option value="kolkata">🇮🇳 Kolkata, West Bengal (कोलकाता)</option>
+              <option value="varanasi">🇮🇳 Varanasi, UP (वाराणसी)</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom:var(--space-lg)">
+            <div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px" data-i18n="panchang.next_arghya">Next Arghya</div>
+            <div style="font-size:var(--text-3xl);font-weight:700;color:var(--text-primary)" data-i18n="panchang.next_arghya_title">🌄 Usha Arghya — Kartik 2026</div>
+            <div id="city-label" style="font-size:var(--text-base);color:var(--saffron);margin-top:6px;font-weight:600">📍 Patna, Bihar</div>
+          </div>
+
+          <div class="countdown-display">
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-days">90</div>
+              <div class="countdown-label" data-i18n="panchang.days">Days</div>
+            </div>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-hours">05</div>
+              <div class="countdown-label" data-i18n="panchang.hours">Hours</div>
+            </div>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-minutes">23</div>
+              <div class="countdown-label" data-i18n="panchang.minutes">Minutes</div>
+            </div>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-seconds">12</div>
+              <div class="countdown-label" data-i18n="panchang.seconds">Seconds</div>
+            </div>
+          </div>
+
+          <div id="next-arghya-time" style="margin-top:var(--space-lg);font-size:var(--text-sm);color:var(--text-secondary);font-weight:500">
+            🌄 Usha Arghya at 06:23 AM IST on November 17, 2026
+          </div>
+        </div>
+
+        <!-- City Timings for 2026 Table -->
+        <div style="margin-bottom:var(--space-2xl)">
+          <h3 style="font-size:var(--text-2xl);margin-bottom:var(--space-lg);display:flex;align-items:center;gap:8px">
+            <span>🌅</span> <span data-i18n="panchang.timings_title">Sandhya & Usha Arghya Timings — 2026</span>
+          </h3>
+          <div style="overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border-card);box-shadow:0 10px 30px rgba(0,0,0,0.3)">
+            <table class="panchang-table">
+              <thead>
+                <tr>
+                  <th data-i18n="panchang.th_city">City</th>
+                  <th data-i18n="panchang.th_sandhya">Sandhya Arghya (Sunset)</th>
+                  <th data-i18n="panchang.th_usha">Usha Arghya (Sunrise)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="row-patna" style="background:rgba(255, 107, 0, 0.12)">
+                  <td><strong>🇮🇳 Patna, Bihar (पटना)</strong></td>
+                  <td><span class="time-val">🌅 05:12 PM IST</span></td>
+                  <td><span class="time-val">🌄 06:23 AM IST</span></td>
+                </tr>
+                <tr id="row-delhi">
+                  <td><strong>🇮🇳 Delhi NCR (दिल्ली)</strong></td>
+                  <td><span class="time-val">🌅 05:28 PM IST</span></td>
+                  <td><span class="time-val">🌄 06:45 AM IST</span></td>
+                </tr>
+                <tr id="row-mumbai">
+                  <td><strong>🇮🇳 Mumbai, Maharashtra (मुंबई)</strong></td>
+                  <td><span class="time-val">🌅 06:05 PM IST</span></td>
+                  <td><span class="time-val">🌄 06:52 AM IST</span></td>
+                </tr>
+                <tr id="row-kolkata">
+                  <td><strong>🇮🇳 Kolkata, West Bengal (कोलकाता)</strong></td>
+                  <td><span class="time-val">🌅 04:58 PM IST</span></td>
+                  <td><span class="time-val">🌄 05:55 AM IST</span></td>
+                </tr>
+                <tr id="row-varanasi">
+                  <td><strong>🇮🇳 Varanasi, UP (वाराणसी)</strong></td>
+                  <td><span class="time-val">🌅 05:18 PM IST</span></td>
+                  <td><span class="time-val">🌄 06:28 AM IST</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:var(--text-xs);color:var(--text-muted);margin-top:10px;padding-left:8px" data-i18n="panchang.accuracy_note">
+            * All times are approximate IST equivalents. Please verify with local almanac (panchang) for your exact location.
+          </p>
+        </div>
+
+        <!-- Multi-Year Panchang (2024–2027) -->
+        <div style="margin-bottom:var(--space-2xl)">
+          <h3 style="font-size:var(--text-2xl);margin-bottom:var(--space-lg);display:flex;align-items:center;gap:8px">
+            <span>📆</span> <span data-i18n="panchang.multi_year_title">Chhath Puja Dates (2024–2027)</span>
+          </h3>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:var(--space-lg)">
+            <!-- 2024 -->
+            <div class="glass-card" style="padding:var(--space-xl)">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:var(--space-lg)">
+                <span style="font-size:1.8rem">☀️</span>
+                <div>
+                  <div style="font-size:var(--text-2xl);font-weight:700;color:var(--saffron)">2024</div>
+                  <div style="font-size:var(--text-xs);color:var(--text-muted)">Kartik Chhath (कार्तिक छठ)</div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:var(--space-sm)">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌊 Nahay Khay</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">नहाय खाय</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Nov 5</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Tuesday (मंगलवार)</div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌙 Kharna</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">खरना</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Nov 6</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Wednesday (बुधवार)</div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌅 Sandhya Arghya</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">संध्या अर्घ्य</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Nov 7</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Thursday (गुरुवार)</div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌄 Usha Arghya</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">उषा अर्घ्य</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Nov 8</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Friday (शुक्रवार)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2025 -->
+            <div class="glass-card" style="padding:var(--space-xl)">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:var(--space-lg)">
+                <span style="font-size:1.8rem">☀️</span>
+                <div>
+                  <div style="font-size:var(--text-2xl);font-weight:700;color:var(--saffron)">2025</div>
+                  <div style="font-size:var(--text-xs);color:var(--text-muted)">Kartik Chhath (कार्तिक छठ)</div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:var(--space-sm)">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌊 Nahay Khay</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">नहाय खाय</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Oct 27</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Monday (सोमवार)</div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌙 Kharna</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">खरना</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Oct 28</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Tuesday (मंगलवार)</div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌅 Sandhya Arghya</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">संध्या अर्घ्य</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Oct 29</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Wednesday (बुधवार)</div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌄 Usha Arghya</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">उषा अर्घ्य</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Oct 30</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Thursday (गुरुवार)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2026 -->
+            <div class="glass-card" style="padding:var(--space-xl);border-color:rgba(255,107,0,0.5)">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:var(--space-lg)">
+                <span style="font-size:1.8rem">☀️</span>
+                <div>
+                  <div style="font-size:var(--text-2xl);font-weight:700;color:var(--saffron)">2026 <span class="badge badge-saffron" style="font-size:10px;vertical-align:middle;margin-left:4px">This Year</span></div>
+                  <div style="font-size:var(--text-xs);color:var(--text-muted)">Kartik Chhath (कार्तिक छठ)</div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:var(--space-sm)">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌊 Nahay Khay</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">नहाय खाय</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Nov 14</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Saturday (शनिवार)</div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌙 Kharna</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">खरना</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Nov 15</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Sunday (रविवार)</div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌅 Sandhya Arghya</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">संध्या अर्घ्य</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Nov 16</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Monday (सोमवार)</div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌄 Usha Arghya</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">उषा अर्घ्य</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Nov 17</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Tuesday (मंगलवार)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2027 -->
+            <div class="glass-card" style="padding:var(--space-xl)">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:var(--space-lg)">
+                <span style="font-size:1.8rem">☀️</span>
+                <div>
+                  <div style="font-size:var(--text-2xl);font-weight:700;color:var(--saffron)">2027</div>
+                  <div style="font-size:var(--text-xs);color:var(--text-muted)">Kartik Chhath (कार्तिक छठ)</div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:var(--space-sm)">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌊 Nahay Khay</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">नहाय खाय</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Nov 4</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Thursday (गुरुवार)</div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌙 Kharna</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">खरना</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Nov 5</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Friday (शुक्रवार)</div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌅 Sandhya Arghya</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">संध्या अर्घ्य</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Nov 6</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Saturday (शनिवार)</div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:var(--radius-md)">
+                  <div>
+                    <div style="font-size:var(--text-sm);font-weight:600">🌄 Usha Arghya</div>
+                    <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted)">उषा अर्घ्य</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-weight:600;color:var(--saffron)">Nov 7</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Sunday (रविवार)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Important Notes -->
+        <div class="mantra-block" style="margin-top:var(--space-xl)">
+          <div style="font-size:var(--text-base);font-weight:700;color:var(--saffron);margin-bottom:8px;display:flex;align-items:center;gap:6px">
+            <span>🕉️</span> <span data-i18n="panchang.tithi_title">About Chhath Tithi</span>
+          </div>
+          <p style="font-size:var(--text-sm);color:var(--text-secondary);line-height:1.8" data-i18n="panchang.tithi_desc">
+            Chhath Puja is observed on the <strong style="color:var(--text-primary)">Shashti (6th) Tithi</strong> of Shukla Paksha
+            in the month of Kartik (October–November). The festival spans 4 days starting from Panchami.
+            Times may vary by 5–15 minutes depending on local geography. Always consult a local panchang for exact muhurat.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared JS -->
+  <script src="js/songs-db.js"></script>
+  <script src="js/audio-player.js"></script>
+  <script src="js/i18n.js"></script>
+
+  <script>
+    // Theme switcher
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.dataset.theme;
+        document.documentElement.setAttribute('data-theme', theme);
+        document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        localStorage.setItem('cg_theme', theme);
+      });
+    });
+    
+    // Load saved theme
+    const savedTheme = localStorage.getItem('cg_theme') || 'usha';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll(`[data-theme="${savedTheme}"]`).forEach(b => b.classList.add('active'));
+
+    // Hamburger toggle
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer = document.getElementById('nav-drawer');
+    if (hamburger && drawer) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        drawer.classList.toggle('open');
+      });
+    }
+
+    // ═══════════════════════════════════════════════
+    // RENDER FEATURED SONGS
+    // ═══════════════════════════════════════════════
+    const featured = getFeaturedSongs();
+    const songsGrid = document.querySelector('.songs-grid');
+    
+    if (songsGrid && featured.length > 0) {
+      songsGrid.innerHTML = featured.map((s, i) => `
+        <div class="song-card" data-song-id="${s.id}" style="cursor:pointer">
+          <div class="song-num">${i + 1}</div>
+          <div class="song-thumb" style="background:linear-gradient(135deg,${DAY_COLORS[s.day] || '#FF6B00'},#FFB300)">
+            <span>${DAY_ICONS[s.day] || '🎵'}</span>
+            <div class="play-overlay">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          </div>
+          <div class="song-info">
+            <div class="song-title">${s.title}</div>
+            <div class="song-title-hi hindi-text">${s.titleHi}</div>
+            <div class="song-meta">
+              <span>${s.artist}</span>
+              <span>·</span>
+              <span>${DAY_NAMES[s.day] || s.day}</span>
+            </div>
+          </div>
+          <div class="song-actions">
+            <button class="btn-icon" title="Play" onclick="event.stopPropagation(); playSongFromDB(SONGS_DB.find(x=>x.id===${s.id}), SONGS_DB)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      // Card click plays the song
+      songsGrid.querySelectorAll('.song-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const id = parseInt(card.dataset.songId);
+          const song = SONGS_DB.find(s => s.id === id);
+          if (song) playSongFromDB(song, SONGS_DB);
+        });
+      });
+    }
+
+    // ═══════════════════════════════════════════════
+    // COUNTDOWN & CITY SELECTOR
+    // ═══════════════════════════════════════════════
+    const cityData = {
+      patna: { name: "Patna, Bihar", ushaTime: "06:23 AM IST", target: '2026-11-17T06:23:00+05:30' },
+      delhi: { name: "Delhi NCR", ushaTime: "06:45 AM IST", target: '2026-11-17T06:45:00+05:30' },
+      mumbai: { name: "Mumbai, Maharashtra", ushaTime: "06:52 AM IST", target: '2026-11-17T06:52:00+05:30' },
+      kolkata: { name: "Kolkata, West Bengal", ushaTime: "05:55 AM IST", target: '2026-11-17T05:55:00+05:30' },
+      varanasi: { name: "Varanasi, UP", ushaTime: "06:28 AM IST", target: '2026-11-17T06:28:00+05:30' }
+    };
+
+    let currentCityKey = 'patna';
+
+    const citySelect = document.getElementById('city-select');
+    const cityLabel = document.getElementById('city-label');
+    const nextArghyaTime = document.getElementById('next-arghya-time');
+
+    if (citySelect) {
+      citySelect.addEventListener('change', (e) => {
+        currentCityKey = e.target.value;
+        const c = cityData[currentCityKey];
+        if (c) {
+          if (cityLabel) cityLabel.textContent = `📍 ${c.name}`;
+          if (nextArghyaTime) nextArghyaTime.textContent = `🌄 Usha Arghya at ${c.ushaTime} on November 17, 2026`;
+          
+          // Highlight table row
+          document.querySelectorAll('.panchang-table tbody tr').forEach(r => r.style.background = '');
+          const activeRow = document.getElementById(`row-${currentCityKey}`);
+          if (activeRow) activeRow.style.background = 'rgba(255, 107, 0, 0.15)';
+        }
+      });
+    }
+
+    function updateCountdown() {
+      const city = cityData[currentCityKey] || cityData.patna;
+      const targetDate = new Date(city.target);
+      const now = new Date();
+      const diff = targetDate - now;
+      
+      const cdDays = document.getElementById('cd-days');
+      const cdHours = document.getElementById('cd-hours');
+      const cdMinutes = document.getElementById('cd-minutes');
+      const cdSeconds = document.getElementById('cd-seconds');
+
+      if (!cdDays) return;
+
+      if (diff <= 0) {
+        cdDays.textContent = '00';
+        cdHours.textContent = '00';
+        cdMinutes.textContent = '00';
+        cdSeconds.textContent = '00';
+        return;
+      }
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      cdDays.textContent = String(days);
+      cdHours.textContent = String(hours).padStart(2, '0');
+      cdMinutes.textContent = String(minutes).padStart(2, '0');
+      cdSeconds.textContent = String(seconds).padStart(2, '0');
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="usha" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover the ancient history, Rigvedic origins, and solar science of Chhath Puja, along with biographies of legendary singers like Sharda Sinha, Anuradha Paudwal, and Kalpana." />
+  <title>About — Chhath Geet</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>" />
+  
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  
+  <style>
+    .story-card {
+      padding: var(--space-2xl);
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .story-icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--space-md);
+    }
+    
+    .singer-card {
+      display: flex;
+      gap: var(--space-lg);
+      padding: var(--space-xl);
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .singer-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--grad-saffron);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+      box-shadow: var(--glow-saffron);
+    }
+    
+    .singer-name {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+    
+    .singer-title {
+      font-size: var(--text-xs);
+      color: var(--saffron);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    
+    .singer-bio {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="home.html" class="nav-logo">
+      <div class="nav-logo-icon">☀️</div>
+      <div>
+        <div class="nav-logo-text" data-i18n="nav.brand">Chhath Geet</div>
+        <span class="nav-logo-sub" data-i18n="nav.brand_sub">छठ गीत</span>
+      </div>
+    </a>
+    
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">
+        <span class="nav-icon">🏠</span> <span data-i18n="nav.home">Home</span>
+      </a>
+      <a href="songs.html" class="nav-link">
+        <span class="nav-icon">📚</span> <span data-i18n="nav.songs">Songs</span>
+      </a>
+      <a href="rituals.html" class="nav-link">
+        <span class="nav-icon">🕯️</span> <span data-i18n="nav.rituals">Rituals</span>
+      </a>
+      <a href="recipe.html" class="nav-link">
+        <span class="nav-icon">🍪</span> <span data-i18n="nav.recipe">Recipe</span>
+      </a>
+      <a href="about.html" class="nav-link active">
+        <span class="nav-icon">ℹ️</span> <span data-i18n="nav.about">About</span>
+      </a>
+    </div>
+    
+    <div class="nav-actions">
+      <!-- Language Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">हिन्दी</button>
+      </div>
+
+      <!-- Theme Switcher -->
+      <div class="theme-switcher">
+        <button class="theme-btn" data-theme="usha" data-i18n="nav.theme_usha">Usha</button>
+        <button class="theme-btn" data-theme="sandhya" data-i18n="nav.theme_sandhya">Sandhya</button>
+        <button class="theme-btn" data-theme="kosi" data-i18n="nav.theme_kosi">Kosi</button>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="home.html" class="nav-link"><span class="nav-icon">🏠</span> <span data-i18n="nav.home">Home</span></a>
+    <a href="songs.html" class="nav-link"><span class="nav-icon">📚</span> <span data-i18n="nav.songs">Songs</span></a>
+    <a href="rituals.html" class="nav-link"><span class="nav-icon">🕯️</span> <span data-i18n="nav.rituals">Rituals</span></a>
+    <a href="recipe.html" class="nav-link"><span class="nav-icon">🍪</span> <span data-i18n="nav.recipe">Recipe</span></a>
+    <a href="about.html" class="nav-link active"><span class="nav-icon">ℹ️</span> <span data-i18n="nav.about">About</span></a>
+    
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:var(--space-md)">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">हिन्दी</button>
+      </div>
+    </div>
+
+    <div class="theme-switcher" style="margin-top:var(--space-md);justify-content:center">
+      <button class="theme-btn" data-theme="usha" data-i18n="nav.theme_usha">Usha</button>
+      <button class="theme-btn" data-theme="sandhya" data-i18n="nav.theme_sandhya">Sandhya</button>
+      <button class="theme-btn" data-theme="kosi" data-i18n="nav.theme_kosi">Kosi</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="app">
+    <div class="page-header">
+      <div class="page-header-bg"></div>
+      <div class="container">
+        <div class="badge badge-gold" style="margin-bottom:var(--space-md)" data-i18n="about.badge">The Sacred Story</div>
+        <h1 class="section-title gradient-text" data-i18n="about.title">About Chhath Puja</h1>
+        <p class="section-subtitle hindi-text" style="font-size:var(--text-xl)">छठ महापर्व का इतिहास एवं सूर्य विज्ञान</p>
+        <p class="section-subtitle" style="margin-top:-12px" data-i18n="about.sub">
+          The history, Vedic origins, and solar science of Mahaparva
+        </p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom:var(--space-3xl)">
+      <!-- History & Origins -->
+      <div class="story-card">
+        <div class="story-icon">📜</div>
+        <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-md)" data-i18n="about.history_title">History & Origins</h2>
+        <div class="hindi-text" style="font-size:var(--text-lg);color:var(--text-secondary);margin-bottom:var(--space-lg)">
+          ऋग्वैदिक काल से चली आ रही सूर्य आराधना
+        </div>
+        <div style="font-size:var(--text-base);color:var(--text-secondary);line-height:1.9;display:flex;flex-direction:column;gap:var(--space-md)">
+          <p>
+            Chhath Puja is one of the oldest surviving festivals in the world, with roots extending directly into the <strong>Rigveda</strong>, where hymns worshipping the Sun God (Surya) and the divine dawn Goddess (Usha) were first recorded.
+          </p>
+          <p>
+            According to the <em>Mahabharata</em>, <strong>Karna</strong>, the son of Surya Bhagwan and ruler of Anga Desh (modern-day Bhagalpur and Munger in Bihar), was the first to establish the tradition of standing chest-deep in river waters at dawn and dusk to offer prayers to his father.
+          </p>
+          <p>
+            In the <em>Ramayana</em>, upon returning to Ayodhya after 14 years of exile and defeating Ravana, Lord Rama and Mata Sita observed a fast and performed Surya Yajna during Kartik Shukla Shashthi, establishing the coronation of the Ramrajya under solar blessing.
+          </p>
+        </div>
+      </div>
+
+      <!-- Solar Science -->
+      <div class="story-card">
+        <div class="story-icon">🔬</div>
+        <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-md)" data-i18n="about.science_title">The Solar Science of Chhath</h2>
+        <div class="hindi-text" style="font-size:var(--text-lg);color:var(--text-secondary);margin-bottom:var(--space-lg)">
+          वैज्ञानिक दृष्टिकोण — सूर्य किरणों एवं जल का संगम
+        </div>
+        <div style="font-size:var(--text-base);color:var(--text-secondary);line-height:1.9;display:flex;flex-direction:column;gap:var(--space-md)">
+          <p>
+            Chhath Puja is a masterclass in ancient bio-energetic science. During sunset and sunrise in the autumn transition month of Kartik, the angle of solar ultraviolet radiation is at its safest biological wavelength.
+          </p>
+          <p>
+            Standing in natural river water activates the body's natural conductivity. When solar rays pass through the water medium and the cow milk poured during Arghya, it prismatically refracts photons into seven spectral bands, stimulating the pineal and pituitary glands to boost immunity and mental tranquility.
+          </p>
+        </div>
+      </div>
+
+      <!-- Legendary Singers -->
+      <div style="margin-bottom:var(--space-2xl)">
+        <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-xl);display:flex;align-items:center;gap:8px">
+          <span>👑</span> <span data-i18n="about.singers_title">Legendary Chhath Geet Singers</span>
+        </h2>
+
+        <!-- Sharda Sinha -->
+        <div class="singer-card">
+          <div class="singer-avatar">👑</div>
+          <div>
+            <div class="singer-name">Padma Bhushan Sharda Sinha (शारदा सिन्हा)</div>
+            <div class="singer-title">The Kokila of Bihar • Voice of Chhath Mahaparva</div>
+            <div class="singer-bio">
+              Renowned as the soul of Chhath Puja, Sharda Sinha immortalized timeless melodies such as <em>"Ho Deenanath"</em>, <em>"Kelwa Ke Paat Par"</em>, and <em>"Pahile Pahil Hum Kayeni"</em>. Her golden voice has united millions of families across the globe during every Chhath festival for over five decades.
+            </div>
+          </div>
+        </div>
+
+        <!-- Anuradha Paudwal -->
+        <div class="singer-card">
+          <div class="singer-avatar">🌸</div>
+          <div>
+            <div class="singer-name">Anuradha Paudwal (अनुराधा पौडवाल)</div>
+            <div class="singer-title">Padma Shri Devotional Icon</div>
+            <div class="singer-bio">
+              Celebrated throughout India for her crystal-pure devotional renditions, Anuradha Paudwal brought classical elegance and deep spiritual devotion to iconic Chhath hymns with T-Series albums.
+            </div>
+          </div>
+        </div>
+
+        <!-- Kalpana Patowary -->
+        <div class="singer-card">
+          <div class="singer-avatar">✨</div>
+          <div>
+            <div class="singer-name">Kalpana Patowary (कल्पना पटोवारी)</div>
+            <div class="singer-title">Folk Prodigy & Traditional Virtuoso</div>
+            <div class="singer-bio">
+              Trained in the authentic Bhojpuri folk traditions, Kalpana Patowary preserves raw, rural acoustic vibrancy and traditional vocal nuance in her soul-stirring Chhath Geet recordings.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- App Info -->
+      <div class="glass-card" style="padding:var(--space-xl);text-align:center">
+        <div style="font-size:2rem;margin-bottom:var(--space-sm)">☀️</div>
+        <h3 style="font-size:var(--text-xl);margin-bottom:var(--space-sm)" data-i18n="about.app_title">About Chhath Geet</h3>
+        <p style="font-size:var(--text-sm);color:var(--text-secondary);max-width:650px;margin:0 auto;line-height:1.8" data-i18n="about.app_desc">
+          Chhath Geet is a digital sanctuary dedicated to the world's most ancient solar festival. Built with deep reverence for tradition, this app brings together 62 sacred audio songs, authentic 4-day ritual guidelines, live arghya panchang, and prasad recipes for devotees worldwide.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Shared JS -->
+  <script src="js/songs-db.js"></script>
+  <script src="js/audio-player.js"></script>
+  <script src="js/i18n.js"></script>
+
+  <script>
+    // Theme switcher
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.dataset.theme;
+        document.documentElement.setAttribute('data-theme', theme);
+        document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        localStorage.setItem('cg_theme', theme);
+      });
+    });
+    
+    const savedTheme = localStorage.getItem('cg_theme') || 'usha';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll(`[data-theme="${savedTheme}"]`).forEach(b => b.classList.add('active'));
+
+    // Hamburger toggle
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer = document.getElementById('nav-drawer');
+    if (hamburger && drawer) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        drawer.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>

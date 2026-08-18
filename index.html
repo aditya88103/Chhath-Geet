@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="0; url=home.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting to Chhath Geet...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0D0805;
+      color: #FFF5E4;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .loader {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <div style="font-size: 4rem; margin-bottom: 20px;">☀️</div>
+    <h1 style="font-size: 2rem; margin: 0 0 10px 0;">Chhath Geet</h1>
+    <p style="color: #D4A574; margin: 0;">Redirecting to homepage...</p>
+  </div>
+  <script>
+    // Fallback if meta refresh doesn't work
+    setTimeout(() => {
+      window.location.href = 'home.html';
+    }, 100);
+  </script>
+</body>
+</html>

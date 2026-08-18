@@ -1,0 +1,331 @@
+/* ============================================================
+   CHHATH GEET — Responsive Layouts
+   Breakpoints: 320px, 480px, 768px, 1024px, 1440px
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════
+   Large Desktop (1440px+)
+══════════════════════════════════════════════════════════ */
+@media (min-width: 1440px) {
+  .container { max-width: 1360px; }
+  .hero-title { font-size: 5.5rem; }
+  .day-cards-grid { grid-template-columns: repeat(4, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ══════════════════════════════════════════════════════════
+   Tablet (768px - 1023px)
+══════════════════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+  /* Navbar */
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-clock { display: none; }
+  .theme-switcher { display: none; }
+
+  /* Hero */
+  .hero-title { font-size: 3rem; }
+
+  /* Day cards: 2x2 */
+  .day-cards-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Gallery: 2-col */
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Player */
+  .player-bar-inner {
+    grid-template-columns: 1fr auto;
+    height: auto;
+    padding: var(--space-md);
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+  .player-song-info { grid-column: 1; }
+  .player-right     { grid-column: 2; }
+  .player-center    { grid-column: 1 / -1; order: 3; }
+  .player-seek      { width: 100%; }
+
+  /* Lightbox nav */
+  .lightbox-nav.prev { left: -10px; }
+  .lightbox-nav.next { right: -10px; }
+
+  /* Samagri grid */
+  .samagri-list { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   Mobile (up to 767px)
+══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  /* Base spacing */
+  .container { padding: 0 var(--space-md); }
+  .section   { padding: var(--space-2xl) 0; }
+
+  /* Navbar */
+  #navbar { padding: 0 var(--space-md); }
+  .nav-logo-text { font-size: var(--text-base); }
+  .lang-btn { display: none; }
+
+  /* Hero */
+  .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+  .hero-title-hi { font-size: clamp(1rem, 5vw, 1.5rem); }
+  .hero-desc { font-size: var(--text-base); }
+  .hero-stats { gap: var(--space-lg); }
+
+  /* Day Cards: single column */
+  .day-cards-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); }
+  .day-card { padding: var(--space-lg); }
+  .day-card-icon { font-size: 2rem; }
+
+  /* Section titles */
+  .section-title { font-size: var(--text-2xl); }
+
+  /* Filter pills: scrollable */
+  .filter-pills { flex-wrap: nowrap; overflow-x: auto; padding-bottom: var(--space-sm); scrollbar-width: none; }
+  .filter-pills::-webkit-scrollbar { display: none; }
+
+  /* Song cards */
+  .song-card { padding: var(--space-sm) var(--space-md); }
+  .song-actions { opacity: 1; }
+  .song-num { display: none; }
+
+  /* Gallery: single col on very small */
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
+
+  /* Player Bar — Mobile Sheet */
+  #player-bar {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .player-bar-inner {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: var(--space-sm) var(--space-md);
+    gap: var(--space-sm);
+  }
+  .player-song-info { width: 100%; }
+  .player-right { display: none; }
+  .player-center { width: 100%; }
+  .player-controls { gap: 4px; }
+  .ctrl-btn.play-btn { width: 40px; height: 40px; }
+  .player-seek { width: 100%; }
+  .seek-time { display: none; }
+  .vol-slider { display: none; }
+
+  /* Ambient panel */
+  .ambient-panel { right: var(--space-md); left: var(--space-md); width: auto; }
+
+  /* Countdown */
+  .countdown-display { gap: var(--space-sm); }
+  .countdown-unit { padding: var(--space-md); min-width: 70px; }
+  .countdown-num { font-size: var(--text-4xl); }
+
+  /* Ritual tabs */
+  .ritual-day-tabs { overflow-x: auto; }
+  .ritual-tab { font-size: var(--text-xs); padding: 8px 14px; }
+
+  /* Batch selector */
+  .batch-selector { gap: var(--space-sm); }
+  .batch-btn { padding: 8px 16px; font-size: var(--text-xs); }
+
+  /* Recipe step */
+  .recipe-step { flex-direction: column; padding: var(--space-lg); gap: var(--space-md); }
+
+  /* Lightbox */
+  #lightbox { padding: var(--space-md); }
+  .lightbox-nav { display: none; }
+  .lightbox-img { max-height: 65vh; }
+
+  /* Lyrics modal */
+  #lyrics-modal { padding: var(--space-md); }
+  .lyrics-container { max-height: 85vh; }
+
+  /* About singer cards */
+  .singers-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Search modal */
+  #search-modal { padding-top: 0; align-items: flex-end; }
+  .search-box { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   Extra small (up to 400px)
+══════════════════════════════════════════════════════════ */
+@media (max-width: 400px) {
+  .day-cards-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid   { grid-template-columns: 1fr; }
+  .hero-stats     { gap: var(--space-md); }
+  .hero-stat-num  { font-size: var(--text-2xl); }
+  .countdown-num  { font-size: var(--text-3xl); }
+  .countdown-unit { min-width: 60px; padding: var(--space-sm); }
+}
+
+/* ══════════════════════════════════════════════════════════
+   Accessibility: reduced motion
+══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .particles-container { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   Print (for samagri checklist export)
+══════════════════════════════════════════════════════════ */
+@media print {
+  #navbar, #player-bar, .player-bar, .particles-container,
+  .hero-actions, .filter-pills, .btn, .search-trigger { display: none !important; }
+
+  body { background: white; color: black; }
+
+  .samagri-item { border: 1px solid #ccc; break-inside: avoid; }
+  .samagri-checkbox { border-color: #333; }
+
+  .print-only { display: block !important; }
+  .no-print   { display: none !important; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   Player page specifics
+══════════════════════════════════════════════════════════ */
+.vinyl-disc {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+  background: conic-gradient(
+    from 0deg,
+    #1a0a03, #2d1204, #FF6B00, #FFB300, #2d1204, #1a0a03, #FF6B00, #1a0a03
+  );
+  box-shadow: 0 0 60px rgba(255,107,0,0.4), inset 0 0 30px rgba(0,0,0,0.5);
+}
+.vinyl-disc.spinning { animation: sun-ray-rotate 4s linear infinite; }
+.vinyl-inner {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px; height: 70px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 0 15px rgba(255,107,0,0.3);
+}
+
+/* Queue list */
+.queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.queue-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  font-size: var(--text-sm);
+}
+.queue-item:hover { background: var(--bg-glass); }
+.queue-item.active { background: rgba(255,107,0,0.15); color: var(--saffron); }
+.queue-item-num { width: 20px; text-align: center; color: var(--text-muted); font-size: var(--text-xs); }
+
+/* Page-level layout helpers */
+.page-header {
+  padding: var(--space-2xl) 0 var(--space-xl);
+  text-align: center;
+  position: relative;
+}
+.page-header-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center top, rgba(255,107,0,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.singers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-lg);
+}
+
+/* City selector */
+.city-select {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  padding: 10px 36px 10px 16px;
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
+  appearance: none;
+  cursor: pointer;
+  min-width: 200px;
+  outline: none;
+  transition: border-color var(--transition-fast);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23D4A574' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.city-select:hover, .city-select:focus { border-color: var(--saffron); }
+.city-select option { background: var(--bg-card); color: var(--text-primary); }
+
+/* Panchang table */
+.panchang-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+.panchang-table th {
+  padding: var(--space-md) var(--space-lg);
+  text-align: left;
+  font-weight: 600;
+  color: var(--saffron);
+  border-bottom: 2px solid var(--border-card);
+  font-family: var(--font-display);
+}
+.panchang-table td {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+.panchang-table tr:hover td { background: var(--bg-glass); }
+.panchang-table .day-label { font-weight: 600; color: var(--text-primary); }
+.panchang-table .time-val { color: var(--saffron); font-weight: 600; font-family: var(--font-display); }
+
+/* Mantra block */
+.mantra-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-left: 4px solid var(--saffron);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: var(--space-lg) var(--space-xl);
+  margin-bottom: var(--space-md);
+}
+.mantra-sanskrit { font-family: var(--font-hindi); font-size: var(--text-lg); color: var(--text-hindi); line-height: 1.8; }
+.mantra-trans { font-size: var(--text-sm); color: var(--text-muted); margin-top: var(--space-sm); font-style: italic; }
+.mantra-meaning { font-size: var(--text-sm); color: var(--text-secondary); margin-top: 4px; }
+
+/* Sacred rule */
+.sacred-rule {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: rgba(191,78,48,0.08);
+  border: 1px solid rgba(191,78,48,0.2);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-sm);
+}
+.sacred-rule-icon { font-size: 18px; flex-shrink: 0; }
+.sacred-rule-text { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6; }

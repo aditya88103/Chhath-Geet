@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="usha" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Authentic Chhath Puja Thekua recipe with precise metric ingredients in grams and milliliters, scalable batch calculator, and sacred rules." />
+  <title>Thekua Recipe — Chhath Geet</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>" />
+  
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  
+  <style>
+    .batch-selector {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    
+    .batch-btn {
+      padding: 12px 24px;
+      background: var(--bg-card);
+      border: 2px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-weight: 600;
+    }
+    
+    .batch-btn:hover {
+      border-color: var(--saffron);
+      background: var(--bg-card-hover);
+    }
+    
+    .batch-btn.active {
+      border-color: var(--saffron);
+      background: rgba(255,107,0,0.15);
+      color: var(--saffron);
+    }
+    
+    .recipe-ingredient {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: 14px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      margin-bottom: 8px;
+    }
+    
+    .recipe-ingredient-icon {
+      font-size: 1.5rem;
+    }
+    
+    .recipe-ingredient-qty {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--saffron);
+    }
+    
+    .recipe-step {
+      display: flex;
+      gap: var(--space-lg);
+      padding: var(--space-xl);
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .recipe-step-num {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--grad-saffron);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: #000;
+    }
+    
+    .recipe-step-title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    
+    .recipe-step-detail {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    
+    .recipe-step-tip {
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: rgba(255,107,0,0.1);
+      border-left: 3px solid var(--saffron);
+      border-radius: 4px;
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+    }
+    
+    .sacred-rule {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+    }
+    
+    .sacred-rule-icon {
+      color: var(--terracotta);
+      font-size: 1.2rem;
+    }
+    
+    .sacred-rule-text {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="home.html" class="nav-logo">
+      <div class="nav-logo-icon">☀️</div>
+      <div>
+        <div class="nav-logo-text" data-i18n="nav.brand">Chhath Geet</div>
+        <span class="nav-logo-sub" data-i18n="nav.brand_sub">छठ गीत</span>
+      </div>
+    </a>
+    
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">
+        <span class="nav-icon">🏠</span> <span data-i18n="nav.home">Home</span>
+      </a>
+      <a href="songs.html" class="nav-link">
+        <span class="nav-icon">📚</span> <span data-i18n="nav.songs">Songs</span>
+      </a>
+      <a href="rituals.html" class="nav-link">
+        <span class="nav-icon">🕯️</span> <span data-i18n="nav.rituals">Rituals</span>
+      </a>
+      <a href="recipe.html" class="nav-link active">
+        <span class="nav-icon">🍪</span> <span data-i18n="nav.recipe">Recipe</span>
+      </a>
+      <a href="about.html" class="nav-link">
+        <span class="nav-icon">ℹ️</span> <span data-i18n="nav.about">About</span>
+      </a>
+    </div>
+    
+    <div class="nav-actions">
+      <!-- Language Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">हिन्दी</button>
+      </div>
+
+      <!-- Theme Switcher -->
+      <div class="theme-switcher">
+        <button class="theme-btn" data-theme="usha" data-i18n="nav.theme_usha">Usha</button>
+        <button class="theme-btn" data-theme="sandhya" data-i18n="nav.theme_sandhya">Sandhya</button>
+        <button class="theme-btn" data-theme="kosi" data-i18n="nav.theme_kosi">Kosi</button>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="home.html" class="nav-link"><span class="nav-icon">🏠</span> <span data-i18n="nav.home">Home</span></a>
+    <a href="songs.html" class="nav-link"><span class="nav-icon">📚</span> <span data-i18n="nav.songs">Songs</span></a>
+    <a href="rituals.html" class="nav-link"><span class="nav-icon">🕯️</span> <span data-i18n="nav.rituals">Rituals</span></a>
+    <a href="recipe.html" class="nav-link active"><span class="nav-icon">🍪</span> <span data-i18n="nav.recipe">Recipe</span></a>
+    <a href="about.html" class="nav-link"><span class="nav-icon">ℹ️</span> <span data-i18n="nav.about">About</span></a>
+    
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:var(--space-md)">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">हिन्दी</button>
+      </div>
+    </div>
+
+    <div class="theme-switcher" style="margin-top:var(--space-md);justify-content:center">
+      <button class="theme-btn" data-theme="usha" data-i18n="nav.theme_usha">Usha</button>
+      <button class="theme-btn" data-theme="sandhya" data-i18n="nav.theme_sandhya">Sandhya</button>
+      <button class="theme-btn" data-theme="kosi" data-i18n="nav.theme_kosi">Kosi</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="app">
+    <div class="page-header">
+      <div class="page-header-bg"></div>
+      <div class="container">
+        <div class="badge badge-terra" style="margin-bottom:var(--space-md)" data-i18n="recipe.badge">Sacred Prasad</div>
+        <h1 class="section-title gradient-text" data-i18n="recipe.title">Thekua Recipe</h1>
+        <p class="section-subtitle hindi-text" style="font-size:var(--text-xl)" data-i18n="recipe.sub">ठेकुआ बनाने की विधि</p>
+        <p class="section-subtitle" style="margin-top:-12px">Authentic wheat, jaggery & pure desi cow ghee recipe in metric grams (g) & milliliters (ml)</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom:var(--space-3xl)">
+
+      <!-- Sacred Rules Banner -->
+      <div class="glass-card" style="padding:var(--space-xl);margin-bottom:var(--space-xl);border-color:rgba(191,78,48,0.4)">
+        <h2 style="font-size:var(--text-xl);margin-bottom:var(--space-lg);color:var(--terracotta-light)" data-i18n="recipe.rules_title">
+          🙏 Sacred Rules of Chhath Prasad
+        </h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-sm)">
+          <div class="sacred-rule">
+            <span class="sacred-rule-icon">🔸</span>
+            <div>
+              <div class="sacred-rule-text" data-i18n="recipe.rule1">All ingredients must be pure and satvik (no onion, garlic, or eggs)</div>
+              <div class="sacred-rule-text hindi-text" style="color:var(--text-muted)">सभी सामग्री शुद्ध और सात्विक होनी चाहिए</div>
+            </div>
+          </div>
+          <div class="sacred-rule">
+            <span class="sacred-rule-icon">🔸</span>
+            <div>
+              <div class="sacred-rule-text" data-i18n="recipe.rule2">Use only pure desi cow ghee, jaggery, and whole wheat flour</div>
+              <div class="sacred-rule-text hindi-text" style="color:var(--text-muted)">केवल देसी घी, गुड़ और गेहूं का आटा उपयोग करें</div>
+            </div>
+          </div>
+          <div class="sacred-rule">
+            <span class="sacred-rule-icon">🔸</span>
+            <div>
+              <div class="sacred-rule-text" data-i18n="recipe.rule3">Prepare in a clean, sanctified space with pure thoughts</div>
+              <div class="sacred-rule-text hindi-text" style="color:var(--text-muted)">स्वच्छ और पवित्र स्थान में शुद्ध विचारों से बनाएं</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Batch Selector -->
+      <div style="margin-bottom:var(--space-xl)">
+        <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-lg)">
+          🍪 <span data-i18n="recipe.batch_title">Batch Size</span> <span class="hindi-text" style="font-size:var(--text-base);color:var(--text-muted)">(मात्रा)</span>
+        </h2>
+        <div class="batch-selector">
+          <button class="batch-btn active" data-multiplier="1">
+            <span class="batch-name">Small (10 pieces)</span>
+            <span class="hindi-text" style="font-size:10px;display:block">10 पीस • ~400g</span>
+          </button>
+          <button class="batch-btn" data-multiplier="2">
+            <span class="batch-name">Medium (20 pieces)</span>
+            <span class="hindi-text" style="font-size:10px;display:block">20 पीस • ~800g</span>
+          </button>
+          <button class="batch-btn" data-multiplier="4">
+            <span class="batch-name">Large (40 pieces)</span>
+            <span class="hindi-text" style="font-size:10px;display:block">40 पीस • ~1.6kg</span>
+          </button>
+          <button class="batch-btn" data-multiplier="6">
+            <span class="batch-name">Family (60 pieces)</span>
+            <span class="hindi-text" style="font-size:10px;display:block">60 पीस • ~2.4kg</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scaled Ingredients in Grams & Milliliters -->
+      <div style="margin-bottom:var(--space-xl)">
+        <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-lg)">
+          🌾 <span data-i18n="recipe.ingredients_title">Ingredients</span> <span id="batch-label" style="font-size:var(--text-sm);color:var(--saffron)">(for 10 pieces)</span>
+        </h2>
+        <div id="ingredients-grid">
+          <div class="recipe-ingredient">
+            <span class="recipe-ingredient-icon">🌾</span>
+            <div style="flex:1">
+              <div style="font-weight:600">Whole Wheat Flour (गेहूं का आटा)</div>
+              <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-secondary)">शुद्ध मोटा पिसा गेहूं का आटा</div>
+            </div>
+            <div><span class="recipe-ingredient-qty" data-base="250" id="ing-flour">250</span> <span class="ing-unit">g</span></div>
+          </div>
+          <div class="recipe-ingredient">
+            <span class="recipe-ingredient-icon">🍯</span>
+            <div style="flex:1">
+              <div style="font-weight:600">Sugarcane Jaggery / Gur (गुड़)</div>
+              <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-secondary)">शुद्ध ईख का गुड़ (बारीक कटा)</div>
+            </div>
+            <div><span class="recipe-ingredient-qty" data-base="150" id="ing-jaggery">150</span> <span class="ing-unit">g</span></div>
+          </div>
+          <div class="recipe-ingredient">
+            <span class="recipe-ingredient-icon">🧈</span>
+            <div style="flex:1">
+              <div style="font-weight:600">Pure Desi Ghee (देसी गाय का घी - मोयन)</div>
+              <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-secondary)">मोयन हेतु शुद्ध देसी घी</div>
+            </div>
+            <div><span class="recipe-ingredient-qty" data-base="60" id="ing-ghee">60</span> <span class="ing-unit">ml</span></div>
+          </div>
+          <div class="recipe-ingredient">
+            <span class="recipe-ingredient-icon">🥥</span>
+            <div style="flex:1">
+              <div style="font-weight:600">Dry Grated Coconut (सूखा कद्दूकस नारियल / गढ़ी)</div>
+              <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-secondary)">सूखा नारियल के बारीक लच्छे</div>
+            </div>
+            <div><span class="recipe-ingredient-qty" data-base="30" id="ing-coconut">30</span> <span class="ing-unit">g</span></div>
+          </div>
+          <div class="recipe-ingredient">
+            <span class="recipe-ingredient-icon">🌰</span>
+            <div style="flex:1">
+              <div style="font-weight:600">Fennel Seeds / Saunf (सौंफ)</div>
+              <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-secondary)">खुशबूदार मोटी हरी सौंफ</div>
+            </div>
+            <div><span class="recipe-ingredient-qty" data-base="10" id="ing-fennel">10</span> <span class="ing-unit">g</span></div>
+          </div>
+          <div class="recipe-ingredient">
+            <span class="recipe-ingredient-icon">🫚</span>
+            <div style="flex:1">
+              <div style="font-weight:600">Green Cardamom Powder (हरी इलायची पाउडर)</div>
+              <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-secondary)">ताज़ा कुटी छोटी इलायची</div>
+            </div>
+            <div><span class="recipe-ingredient-qty" data-base="3" id="ing-cardamom">3</span> <span class="ing-unit">g</span></div>
+          </div>
+          <div class="recipe-ingredient">
+            <span class="recipe-ingredient-icon">💧</span>
+            <div style="flex:1">
+              <div style="font-weight:600">Pure Water (पानी - चाशनी हेतु)</div>
+              <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-secondary)">गुड़ घोलने हेतु स्वच्छ जल</div>
+            </div>
+            <div><span class="recipe-ingredient-qty" data-base="50" id="ing-water">50</span> <span class="ing-unit">ml</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step-by-Step Instructions -->
+      <div style="margin-bottom:var(--space-xl)">
+        <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-lg)" data-i18n="recipe.steps_title">
+          👨‍🍳 Step-by-Step Instructions
+        </h2>
+        
+        <div class="recipe-step">
+          <div class="recipe-step-num">1</div>
+          <div style="flex:1">
+            <div class="recipe-step-title" data-i18n="recipe.step1_title">🍯 Prepare Jaggery Syrup</div>
+            <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:8px">गुड़ की चाशनी बनाएं</div>
+            <div class="recipe-step-detail" data-i18n="recipe.step1_desc">
+              Melt jaggery (150 g) in a pan with 50 ml water on low flame until dissolved into a one-string syrup. Strain to remove impurities.
+            </div>
+            <div class="recipe-step-tip">💡 Tip: Do not overcook or boil excessively into hard caramel — keep syrup warm and light.</div>
+          </div>
+        </div>
+
+        <div class="recipe-step">
+          <div class="recipe-step-num">2</div>
+          <div style="flex:1">
+            <div class="recipe-step-title" data-i18n="recipe.step2_title">🌾 Prepare the Dough</div>
+            <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:8px">आटा और मोयन तैयार करें</div>
+            <div class="recipe-step-detail" data-i18n="recipe.step2_desc">
+              In a large bowl, mix wheat flour (250 g), fennel seeds (10 g), cardamom powder (3 g), and grated coconut (30 g). Rub in 60 ml desi ghee evenly. Gradually add warm jaggery syrup and knead into a firm, stiff dough. Rest for 25–30 minutes.
+            </div>
+            <div class="recipe-step-tip">💡 Tip: The dough must be firm and dense (tight), not soft like chapati dough.</div>
+          </div>
+        </div>
+
+        <div class="recipe-step">
+          <div class="recipe-step-num">3</div>
+          <div style="flex:1">
+            <div class="recipe-step-title" data-i18n="recipe.step3_title">🍪 Shape the Thekua</div>
+            <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:8px">ठेकुआ को आकार दें</div>
+            <div class="recipe-step-detail" data-i18n="recipe.step3_desc">
+              Divide dough into equal lemon-sized portions (approx. 40 g each). Flatten into 1/2-inch thick oval or round discs. Press onto a traditional wooden thekua mold or fork to imprint designs.
+            </div>
+            <div class="recipe-step-tip">💡 Tip: Traditional leaf and sun motifs help the thekua cook evenly from within.</div>
+          </div>
+        </div>
+
+        <div class="recipe-step">
+          <div class="recipe-step-num">4</div>
+          <div style="flex:1">
+            <div class="recipe-step-title" data-i18n="recipe.step4_title">🔥 Deep Fry in Desi Ghee</div>
+            <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:8px">शुद्ध देसी घी में तलें</div>
+            <div class="recipe-step-detail" data-i18n="recipe.step4_desc">
+              Heat desi ghee in a deep kadhai on medium-low flame. Gently slide thekua discs in small batches. Fry patiently on low flame until both sides turn golden-brown (12–15 minutes).
+            </div>
+            <div class="recipe-step-tip">💡 Tip: Maintaining low-medium heat is crucial for a crisp, flaky texture without burning.</div>
+          </div>
+        </div>
+
+        <div class="recipe-step">
+          <div class="recipe-step-num">5</div>
+          <div style="flex:1">
+            <div class="recipe-step-title" data-i18n="recipe.step5_title">✨ Cool & Store</div>
+            <div class="hindi-text" style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:8px">ठंडा करें एवं सुरक्षित रखें</div>
+            <div class="recipe-step-detail" data-i18n="recipe.step5_desc">
+              Drain on parchment paper and let cool completely on a wire rack. As they cool, they turn delightfully crisp and crunchy. Store in an airtight container for up to 3 weeks.
+            </div>
+            <div class="recipe-step-tip">💡 Tip: Freshly fried thekuas are soft initially; they achieve signature crunch upon cooling.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pro Tips -->
+      <div>
+        <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-lg)" data-i18n="recipe.tips_title">
+          ✨ Pro Tips for Perfect Thekua
+        </h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-md)">
+          <div class="glass-card" style="padding:var(--space-lg)">
+            <div style="font-size:1.5rem;margin-bottom:var(--space-sm)">💡</div>
+            <div style="font-size:var(--text-sm);color:var(--text-primary);font-weight:500;line-height:1.6">
+              Use coarsely ground whole wheat flour (motā aatā) and pure cow desi ghee for authentic crunch.
+            </div>
+          </div>
+          <div class="glass-card" style="padding:var(--space-lg)">
+            <div style="font-size:1.5rem;margin-bottom:var(--space-sm)">💡</div>
+            <div style="font-size:var(--text-sm);color:var(--text-primary);font-weight:500;line-height:1.6">
+              Resting the dough for 25–30 minutes allows the gluten to relax and jaggery flavor to infuse deeply.
+            </div>
+          </div>
+          <div class="glass-card" style="padding:var(--space-lg)">
+            <div style="font-size:1.5rem;margin-bottom:var(--space-sm)">💡</div>
+            <div style="font-size:var(--text-sm);color:var(--text-primary);font-weight:500;line-height:1.6">
+              Never rush frying on high heat — gentle low heat guarantees crispy golden outer crust and cooked core.
+            </div>
+          </div>
+          <div class="glass-card" style="padding:var(--space-lg)">
+            <div style="font-size:1.5rem;margin-bottom:var(--space-sm)">💡</div>
+            <div style="font-size:var(--text-sm);color:var(--text-primary);font-weight:500;line-height:1.6">
+              Add a pinch of dry ginger powder (sonth) for enhanced digestive aroma and divine fragrance.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Shared JS -->
+  <script src="js/songs-db.js"></script>
+  <script src="js/audio-player.js"></script>
+  <script src="js/i18n.js"></script>
+
+  <script>
+    // Theme switcher
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.dataset.theme;
+        document.documentElement.setAttribute('data-theme', theme);
+        document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        localStorage.setItem('cg_theme', theme);
+      });
+    });
+    
+    const savedTheme = localStorage.getItem('cg_theme') || 'usha';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll(`[data-theme="${savedTheme}"]`).forEach(b => b.classList.add('active'));
+
+    // Hamburger toggle
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer = document.getElementById('nav-drawer');
+    if (hamburger && drawer) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        drawer.classList.toggle('open');
+      });
+    }
+
+    // Metric Batch size calculator in Grams & Milliliters
+    document.querySelectorAll('.batch-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.batch-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const multiplier = parseFloat(btn.dataset.multiplier);
+        const pieces = multiplier * 10;
+        const isHindi = document.documentElement.getAttribute('data-lang') === 'hi';
+        document.getElementById('batch-label').textContent = isHindi ? `(${pieces} पीस हेतु)` : `(for ${pieces} pieces)`;
+        
+        // Update all ingredients in grams & ml
+        document.querySelectorAll('.recipe-ingredient-qty').forEach(qty => {
+          const base = parseFloat(qty.dataset.base);
+          const newVal = base * multiplier;
+          qty.textContent = newVal % 1 === 0 ? newVal : newVal.toFixed(0);
+        });
+      });
+    });
+
+    window.addEventListener('chhathLangChange', (e) => {
+      const activeBatch = document.querySelector('.batch-btn.active');
+      if (activeBatch) {
+        const multiplier = parseFloat(activeBatch.dataset.multiplier);
+        const pieces = multiplier * 10;
+        const isHindi = e.detail.lang === 'hi';
+        document.getElementById('batch-label').textContent = isHindi ? `(${pieces} पीस हेतु)` : `(for ${pieces} pieces)`;
+      }
+    });
+  </script>
+</body>
+</html>
