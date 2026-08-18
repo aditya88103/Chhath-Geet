@@ -626,6 +626,40 @@ const SONGS_DB = [
   }
 ];
 
+// Metadata constants
+const DAY_NAMES = {
+  'nahay-khay': 'Day 1: Nahay Khay (नहाय खाय)',
+  'kharna': 'Day 2: Kharna (खरना)',
+  'sandhya-arghya': 'Day 3: Sandhya Arghya (संध्या अर्घ्य)',
+  'usha-arghya': 'Day 4: Usha Arghya (उषा अर्घ्य)',
+  'kosi': 'Kosi Bharai (कोसी भराई)',
+  'general': 'Sarvajanik (सार्वजनिक)'
+};
+
+const DAY_COLORS = {
+  'nahay-khay': '#2196A6',
+  'kharna': '#FF8F00',
+  'sandhya-arghya': '#E91E63',
+  'usha-arghya': '#FF6B00',
+  'kosi': '#9C27B0',
+  'general': '#4CAF50'
+};
+
+const DAY_ICONS = {
+  'nahay-khay': '🌊',
+  'kharna': '🌙',
+  'sandhya-arghya': '🌅',
+  'usha-arghya': '🌄',
+  'kosi': '🎋',
+  'general': '☀️'
+};
+
+const CATEGORY_NAMES = {
+  'paramparik': 'Traditional (पारंपरिक)',
+  'aarti': 'Aarti & Bhajan (आरती व भजन)',
+  'modern': 'Modern (आधुनिक)'
+};
+
 // Helper functions
 function getFeaturedSongs() {
   return SONGS_DB.slice(0, 6);
@@ -652,3 +686,4 @@ function getAllArtists() {
   });
   return Array.from(artists).sort();
 }
+
