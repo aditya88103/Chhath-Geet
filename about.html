@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Discover the ancient history, Rigvedic origins, and solar science of Chhath Puja, along with biographies of legendary singers like Sharda Sinha, Anuradha Paudwal, and Kalpana." />
+  <meta name="description" content="Discover the Vedic history, Mahabharata and Ramayana origins, solar bio-energetic science, and legendary singers of Chhath Puja." />
   <title>About — Chhath Geet</title>
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>" />
@@ -17,8 +17,20 @@
       padding: var(--space-2xl);
       background: var(--bg-card);
       border: 1px solid var(--border-card);
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius-lg);
       margin-bottom: var(--space-2xl);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .story-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--grad-saffron);
     }
     
     .story-icon {
@@ -34,34 +46,33 @@
       border: 1px solid var(--border-card);
       border-radius: var(--radius-lg);
       margin-bottom: var(--space-lg);
+      align-items: flex-start;
     }
     
     .singer-avatar {
-      width: 72px;
-      height: 72px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       background: var(--grad-saffron);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.8rem;
       flex-shrink: 0;
-      box-shadow: var(--glow-saffron);
+      box-shadow: 0 4px 16px rgba(255,107,0,0.3);
     }
     
     .singer-name {
-      font-size: var(--text-xl);
+      font-size: var(--text-lg);
       font-weight: 700;
+      margin-bottom: 4px;
       color: var(--text-primary);
-      margin-bottom: 2px;
     }
     
     .singer-title {
       font-size: var(--text-xs);
       color: var(--saffron);
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
       margin-bottom: 8px;
     }
     
@@ -79,7 +90,7 @@
       <div class="nav-logo-icon">☀️</div>
       <div>
         <div class="nav-logo-text" data-i18n="nav.brand">Chhath Geet</div>
-        <span class="nav-logo-sub" data-i18n="nav.brand_sub">छठ गीत</span>
+        <span class="nav-logo-sub" data-i18n="nav.brand_sub">Sacred Chhath Puja Sanctuary</span>
       </div>
     </a>
     
@@ -149,8 +160,7 @@
       <div class="container">
         <div class="badge badge-gold" style="margin-bottom:var(--space-md)" data-i18n="about.badge">The Sacred Story</div>
         <h1 class="section-title gradient-text" data-i18n="about.title">About Chhath Puja</h1>
-        <p class="section-subtitle hindi-text" style="font-size:var(--text-xl)">छठ महापर्व का इतिहास एवं सूर्य विज्ञान</p>
-        <p class="section-subtitle" style="margin-top:-12px" data-i18n="about.sub">
+        <p class="section-subtitle" data-i18n="about.sub">
           The history, Vedic origins, and solar science of Mahaparva
         </p>
       </div>
@@ -161,19 +171,33 @@
       <div class="story-card">
         <div class="story-icon">📜</div>
         <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-md)" data-i18n="about.history_title">History & Origins</h2>
-        <div class="hindi-text" style="font-size:var(--text-lg);color:var(--text-secondary);margin-bottom:var(--space-lg)">
-          ऋग्वैदिक काल से चली आ रही सूर्य आराधना
+        
+        <div class="lang-en">
+          <div style="font-size:var(--text-base);color:var(--text-secondary);line-height:1.9;display:flex;flex-direction:column;gap:var(--space-md)">
+            <p>
+              Chhath Puja is one of the oldest surviving festivals in the world, with roots extending directly into the <strong>Rigveda</strong>, where hymns worshipping the Sun God (Surya) and the divine dawn Goddess (Usha) were first recorded.
+            </p>
+            <p>
+              According to the <em>Mahabharata</em>, <strong>Karna</strong>, the son of Surya Bhagwan and ruler of Anga Desh (modern-day Bhagalpur and Munger in Bihar), was the first to establish the tradition of standing chest-deep in river waters at dawn and dusk to offer prayers to his father.
+            </p>
+            <p>
+              In the <em>Ramayana</em>, upon returning to Ayodhya after 14 years of exile and defeating Ravana, Lord Rama and Mata Sita observed a fast and performed Surya Yajna during Kartik Shukla Shashthi, establishing the coronation of Ramrajya under solar blessing.
+            </p>
+          </div>
         </div>
-        <div style="font-size:var(--text-base);color:var(--text-secondary);line-height:1.9;display:flex;flex-direction:column;gap:var(--space-md)">
-          <p>
-            Chhath Puja is one of the oldest surviving festivals in the world, with roots extending directly into the <strong>Rigveda</strong>, where hymns worshipping the Sun God (Surya) and the divine dawn Goddess (Usha) were first recorded.
-          </p>
-          <p>
-            According to the <em>Mahabharata</em>, <strong>Karna</strong>, the son of Surya Bhagwan and ruler of Anga Desh (modern-day Bhagalpur and Munger in Bihar), was the first to establish the tradition of standing chest-deep in river waters at dawn and dusk to offer prayers to his father.
-          </p>
-          <p>
-            In the <em>Ramayana</em>, upon returning to Ayodhya after 14 years of exile and defeating Ravana, Lord Rama and Mata Sita observed a fast and performed Surya Yajna during Kartik Shukla Shashthi, establishing the coronation of the Ramrajya under solar blessing.
-          </p>
+
+        <div class="lang-hi">
+          <div style="font-size:var(--text-base);color:var(--text-secondary);line-height:1.9;display:flex;flex-direction:column;gap:var(--space-md)">
+            <p>
+              छठ पूजा विश्व के प्राचीनतम जीवित महापर्वों में से एक है, जिसके मूल <strong>ऋग्वेद</strong> के पावन मन्त्रों से जुड़े हैं, जहां प्रत्यक्ष देव सूर्य एवं उषा देवी की आराधना की महिमा वर्णित है।
+            </p>
+            <p>
+              <em>महाभारत</em> के अनुसार, सूर्यपुत्र अंगराज <strong>कर्ण</strong> (वर्तमान मुंगेर व भागलपुर, बिहार) ने सूर्यदेव की आराधना हेतु जल में खड़े होकर अर्घ्य दान देने की परंपरा आरंभ की थी।
+            </p>
+            <p>
+              <em>रामायण</em> के अनुसार, 14 वर्ष के वनवास के बाद अयोध्या वापसी पर प्रभु श्रीराम और माता सीता ने कार्तिक मास के शुक्ल पक्ष की षष्ठी तिथि को सूर्यदेव की विधिवत उपासना कर रामराज्य की स्थापना का आशीष प्राप्त किया था।
+            </p>
+          </div>
         </div>
       </div>
 
@@ -181,16 +205,27 @@
       <div class="story-card">
         <div class="story-icon">🔬</div>
         <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-md)" data-i18n="about.science_title">The Solar Science of Chhath</h2>
-        <div class="hindi-text" style="font-size:var(--text-lg);color:var(--text-secondary);margin-bottom:var(--space-lg)">
-          वैज्ञानिक दृष्टिकोण — सूर्य किरणों एवं जल का संगम
+        
+        <div class="lang-en">
+          <div style="font-size:var(--text-base);color:var(--text-secondary);line-height:1.9;display:flex;flex-direction:column;gap:var(--space-md)">
+            <p>
+              Chhath Puja is a masterclass in ancient bio-energetic science. During sunset and sunrise in the autumn transition month of Kartik, the angle of solar ultraviolet radiation is at its safest biological wavelength.
+            </p>
+            <p>
+              Standing in natural river water activates the body's natural conductivity. When solar rays pass through the water medium and the milk poured during Arghya, it prismatically refracts photons into seven spectral bands, stimulating the pineal and pituitary glands to boost immunity and mental tranquility.
+            </p>
+          </div>
         </div>
-        <div style="font-size:var(--text-base);color:var(--text-secondary);line-height:1.9;display:flex;flex-direction:column;gap:var(--space-md)">
-          <p>
-            Chhath Puja is a masterclass in ancient bio-energetic science. During sunset and sunrise in the autumn transition month of Kartik, the angle of solar ultraviolet radiation is at its safest biological wavelength.
-          </p>
-          <p>
-            Standing in natural river water activates the body's natural conductivity. When solar rays pass through the water medium and the cow milk poured during Arghya, it prismatically refracts photons into seven spectral bands, stimulating the pineal and pituitary glands to boost immunity and mental tranquility.
-          </p>
+
+        <div class="lang-hi">
+          <div style="font-size:var(--text-base);color:var(--text-secondary);line-height:1.9;display:flex;flex-direction:column;gap:var(--space-md)">
+            <p>
+              छठ पूजा प्राचीन सौर जैव-ऊर्जा विज्ञान का अनुपम उदाहरण है। कार्तिक मास के शरद संक्रमण काल में सूर्यास्त और सूर्योदय के समय पराबैंगनी किरणों (UV rays) की तीव्रता मानव शरीर के लिए सर्वाधिक अनुकूल होती है।
+            </p>
+            <p>
+              नदी के बहते जल में खड़े होने से शरीर की विद्युत चालकता सक्रिय होती है। अर्घ्य के दौरान गिरते दूध और जल की धार से सूर्य की किरणें सात रंगों में विभक्त होकर पीनियल व पिट्यूटरी ग्रंथि को उत्तेजित करती हैं, जिससे मानसिक शांति और रोग प्रतिरोधक क्षमता बढ़ती है।
+            </p>
+          </div>
         </div>
       </div>
 
@@ -203,11 +238,20 @@
         <!-- Sharda Sinha -->
         <div class="singer-card">
           <div class="singer-avatar">👑</div>
-          <div>
-            <div class="singer-name">Padma Bhushan Sharda Sinha (शारदा सिन्हा)</div>
-            <div class="singer-title">The Kokila of Bihar • Voice of Chhath Mahaparva</div>
-            <div class="singer-bio">
-              Renowned as the soul of Chhath Puja, Sharda Sinha immortalized timeless melodies such as <em>"Ho Deenanath"</em>, <em>"Kelwa Ke Paat Par"</em>, and <em>"Pahile Pahil Hum Kayeni"</em>. Her golden voice has united millions of families across the globe during every Chhath festival for over five decades.
+          <div style="flex:1">
+            <div class="lang-en">
+              <div class="singer-name">Padma Bhushan Sharda Sinha</div>
+              <div class="singer-title">The Kokila of Bihar • Voice of Chhath Mahaparva</div>
+              <div class="singer-bio">
+                Renowned as the soul of Chhath Puja, Sharda Sinha immortalized timeless melodies such as <em>"Ho Deenanath"</em>, <em>"Kelwa Ke Paat Par"</em>, and <em>"Pahile Pahil Hum Kayeni"</em>. Her golden voice has united millions of families across the globe during every Chhath festival for over five decades.
+              </div>
+            </div>
+            <div class="lang-hi">
+              <div class="singer-name">पद्म भूषण शारदा सिन्हा</div>
+              <div class="singer-title">बिहार कोकिला • छठ महापर्व की अमर आवाज़</div>
+              <div class="singer-bio">
+                छठ पूजा की आत्मा मानी जाने वाली शारदा सिन्हा ने <em>"हो दीनानाथ"</em>, <em>"केलवा के पात पर"</em> और <em>"पहिले पहिल हम कयनी"</em> जैसे कालजयी गीतों को अमर बना दिया। उनकी दिव्य आवाज़ 5 दशकों से हर छठ पर्व पर करोड़ों परिवारों को श्रद्धा सूत्र में बांधे हुए है।
+              </div>
             </div>
           </div>
         </div>
@@ -215,11 +259,20 @@
         <!-- Anuradha Paudwal -->
         <div class="singer-card">
           <div class="singer-avatar">🌸</div>
-          <div>
-            <div class="singer-name">Anuradha Paudwal (अनुराधा पौडवाल)</div>
-            <div class="singer-title">Padma Shri Devotional Icon</div>
-            <div class="singer-bio">
-              Celebrated throughout India for her crystal-pure devotional renditions, Anuradha Paudwal brought classical elegance and deep spiritual devotion to iconic Chhath hymns with T-Series albums.
+          <div style="flex:1">
+            <div class="lang-en">
+              <div class="singer-name">Padma Shri Anuradha Paudwal</div>
+              <div class="singer-title">Devotional Icon</div>
+              <div class="singer-bio">
+                Celebrated throughout India for her crystal-pure devotional renditions, Anuradha Paudwal brought classical elegance and deep spiritual devotion to iconic Chhath hymns with T-Series albums.
+              </div>
+            </div>
+            <div class="lang-hi">
+              <div class="singer-name">पद्म श्री अनुराधा पौडवाल</div>
+              <div class="singer-title">प्रख्यात भक्ति संगीत साधिका</div>
+              <div class="singer-bio">
+                अपनी सुरीली और भावपूर्ण गायकी से विख्यात अनुराधा पौडवाल ने टी-सीरीज़ के माध्यम से छठ भजनों को शास्त्रीय गरिमा और घर-घर तक पहुंचाया।
+              </div>
             </div>
           </div>
         </div>
@@ -227,11 +280,20 @@
         <!-- Kalpana Patowary -->
         <div class="singer-card">
           <div class="singer-avatar">✨</div>
-          <div>
-            <div class="singer-name">Kalpana Patowary (कल्पना पटोवारी)</div>
-            <div class="singer-title">Folk Prodigy & Traditional Virtuoso</div>
-            <div class="singer-bio">
-              Trained in the authentic Bhojpuri folk traditions, Kalpana Patowary preserves raw, rural acoustic vibrancy and traditional vocal nuance in her soul-stirring Chhath Geet recordings.
+          <div style="flex:1">
+            <div class="lang-en">
+              <div class="singer-name">Kalpana Patowary</div>
+              <div class="singer-title">Folk Prodigy & Traditional Virtuoso</div>
+              <div class="singer-bio">
+                Trained in authentic folk traditions, Kalpana Patowary preserves raw acoustic vibrancy and traditional vocal nuance in her soul-stirring Chhath recordings.
+              </div>
+            </div>
+            <div class="lang-hi">
+              <div class="singer-name">कल्पना पटोवारी</div>
+              <div class="singer-title">लोक संगीत साधिका एवं पारंपरिक गायिका</div>
+              <div class="singer-bio">
+                लोक संगीत में पारंगत कल्पना पटोवारी ने पारंपरिक भोजपुरी छठ गीतों को अपनी सशक्त और भावमयी आवाज़ से नया आयाम दिया है।
+              </div>
             </div>
           </div>
         </div>

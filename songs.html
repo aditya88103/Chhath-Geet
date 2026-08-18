@@ -214,7 +214,6 @@
       <div class="container">
         <div class="badge badge-gold" style="margin-bottom:var(--space-md)" data-i18n="songs.badge">Complete Audio Collection</div>
         <h1 class="section-title gradient-text" data-i18n="songs.title">62 Sacred Chhath Geet</h1>
-        <p class="section-subtitle hindi-text" style="font-size:var(--text-xl)">सम्पूर्ण पावन छठ गीत संग्रह</p>
         <p class="section-subtitle" style="margin-top:-12px" data-i18n="songs.sub">
           Filter by your favorite Singers and Ritual Days • Click any song to play instantly
         </p>
@@ -245,14 +244,14 @@
             </select>
           </div>
           <div class="filter-pills" id="singer-pills">
-            <button class="filter-pill active" data-singer="all" data-i18n="filter.all_singers">All Singers</button>
-            <button class="filter-pill" data-singer="Sharda Sinha">👑 Sharda Sinha</button>
-            <button class="filter-pill" data-singer="Anuradha Paudwal">🌸 Anuradha Paudwal</button>
-            <button class="filter-pill" data-singer="Kalpana Patowary">✨ Kalpana Patowary</button>
-            <button class="filter-pill" data-singer="Pawan Singh">🔥 Pawan Singh</button>
-            <button class="filter-pill" data-singer="Swati Mishra">🌟 Swati Mishra</button>
-            <button class="filter-pill" data-singer="Devi">🕊️ Devi</button>
-            <button class="filter-pill" data-singer="Khesari Lal Yadav">🎵 Khesari Lal</button>
+            <button class="filter-pill active" data-singer="all" data-i18n="filter.all_singers">All</button>
+            <button class="filter-pill" data-singer="Sharda Sinha">Sharda Sinha</button>
+            <button class="filter-pill" data-singer="Anuradha Paudwal">Anuradha Paudwal</button>
+            <button class="filter-pill" data-singer="Kalpana Patowary">Kalpana Patowary</button>
+            <button class="filter-pill" data-singer="Pawan Singh">Pawan Singh</button>
+            <button class="filter-pill" data-singer="Swati Mishra">Swati Mishra</button>
+            <button class="filter-pill" data-singer="Devi">Devi</button>
+            <button class="filter-pill" data-singer="Khesari Lal Yadav">Khesari Lal</button>
           </div>
         </div>
 
@@ -262,13 +261,13 @@
             <span>🌅</span> <span data-i18n="songs.filter_days_label">Filter by Chhath Day:</span>
           </div>
           <div class="filter-pills" id="day-pills">
-            <button class="filter-pill active" data-day="all" data-i18n="filter.all_days">All Days (62)</button>
-            <button class="filter-pill" data-day="nahay-khay">🌊 Day 1: Nahay Khay</button>
-            <button class="filter-pill" data-day="kharna">🌙 Day 2: Kharna</button>
-            <button class="filter-pill" data-day="sandhya-arghya">🌅 Day 3: Sandhya Arghya</button>
-            <button class="filter-pill" data-day="usha-arghya">🌄 Day 4: Usha Arghya</button>
-            <button class="filter-pill" data-day="kosi">🎋 Kosi Bharai</button>
-            <button class="filter-pill" data-day="general">☀️ Sarvajanik</button>
+            <button class="filter-pill active" data-day="all" data-i18n="filter.all_days">All Days</button>
+            <button class="filter-pill" data-day="nahay-khay" data-i18n="filter.day1">Day 1</button>
+            <button class="filter-pill" data-day="kharna" data-i18n="filter.day2">Day 2</button>
+            <button class="filter-pill" data-day="sandhya-arghya" data-i18n="filter.day3">Day 3</button>
+            <button class="filter-pill" data-day="usha-arghya" data-i18n="filter.day4">Day 4</button>
+            <button class="filter-pill" data-day="kosi" data-i18n="filter.kosi">Kosi</button>
+            <button class="filter-pill" data-day="general" data-i18n="filter.general">General</button>
           </div>
         </div>
 
@@ -279,9 +278,9 @@
           </div>
           <div class="filter-pills" id="category-pills">
             <button class="filter-pill active" data-cat="all" data-i18n="filter.all_categories">All Categories</button>
-            <button class="filter-pill" data-cat="paramparik" data-i18n="filter.paramparik">🎶 Traditional</button>
-            <button class="filter-pill" data-cat="aarti" data-i18n="filter.aarti">🙏 Aarti & Bhajan</button>
-            <button class="filter-pill" data-cat="modern" data-i18n="filter.modern">🎤 Modern</button>
+            <button class="filter-pill" data-cat="paramparik" data-i18n="filter.paramparik">Traditional</button>
+            <button class="filter-pill" data-cat="aarti" data-i18n="filter.aarti">Aarti</button>
+            <button class="filter-pill" data-cat="modern" data-i18n="filter.modern">Modern</button>
           </div>
         </div>
       </div>
@@ -449,6 +448,7 @@
         return;
       }
 
+      const isHindi = document.documentElement.getAttribute('data-lang') === 'hi';
       const currentSong = window.CG_PLAYER ? window.CG_PLAYER.currentSong : null;
 
       songsContainer.innerHTML = filtered.map((s, i) => `
@@ -461,8 +461,7 @@
             </div>
           </div>
           <div class="song-info">
-            <div class="song-title">${s.title}</div>
-            <div class="song-title-hi hindi-text">${s.titleHi}</div>
+            <div class="song-title">${isHindi && s.titleHi ? s.titleHi : s.title}</div>
             <div class="song-meta">
               <span>${s.artist}</span>
               <span>·</span>
@@ -485,6 +484,10 @@
         });
       });
     }
+
+    window.addEventListener('chhathLangChange', () => {
+      renderSongs();
+    });
 
     function playSpecificSong(id) {
       const filtered = getFilteredSongs();

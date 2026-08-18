@@ -145,6 +145,15 @@
   padding: 0;
 }
 
+/* ── Language Visibility Controls ────────────────────────────── */
+html[data-lang="en"] .lang-hi {
+  display: none !important;
+}
+html[data-lang="hi"] .lang-en {
+  display: none !important;
+}
+
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
